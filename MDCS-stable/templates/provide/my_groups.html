@@ -1,0 +1,49 @@
+{% load dict_key_extras %}
+
+<table class="data-table">
+    <tr>
+        <th width="75em">Group name</th>
+        <th width="30em">Owner</th>
+        <th width="100em">Description</th>
+        <th width="200em">Actions</th>
+    </tr>
+    {% for group in groups %}
+    {% with key=group.id %}
+        {% cycle 'even' '' as rowcolors silent %}
+        <tr class="{{ rowcolors }}">
+            <td>
+                    <script>
+                        document.write('{{ group.groupname }}'.replace(/\.[^/.]+$/, ""));
+                    </script>
+            </td>
+            <td>{{ group.owner.user.username}}
+            </td>
+            <td>
+                {{group.description}}
+            </td>
+            <td>
+                test
+                <!--{% autoescape on %}-->
+                <!--<a href="/dashboard/detail?type=record&id={{XMLdata_id}}"><span class="icon legend result">-->
+                    <!--View-->
+                <!--</span></a>-->
+                <!--{% endautoescape %}-->
+                <!--<a href="/curate/enter-data?id={{XMLdata_id}}"><span class="icon legend edit">-->
+                    <!--Edit-->
+                <!--</span></a>-->
+                <!--{% if not XMLdata.ispublished %}-->
+                <!--<span class="icon legend publish" onclick="updatePublish('{{XMLdata_id}}')">-->
+                    <!--Publish-->
+                <!--</span>-->
+                <!--{% endif %}-->
+                <!--<span class="icon legend delete" onclick="deleteResult('{{XMLdata_id}}')">-->
+                    <!--Delete-->
+                <!--</span>-->
+                <!--<span class="icon legend changeOwner" onclick="changeOwnerRecord('{{XMLdata_id}}')">-->
+                    <!--Change Owner-->
+                <!--</span>-->
+            </td>
+        </tr>
+    {% endwith %}
+    {% endfor %}
+</table>

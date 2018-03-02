@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>demo</title>
+    <!-- 新增加了bootstrap.css文件，是从bootstrap网站上下载的-->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style media="screen">
+      html,body{
+        margin: 0;
+        padding: 0;
+      }
+      body{
+        background-color: #e4e6e9;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="jsonShow">
+      <div id="navigation">
+      </div>
+      <div id="content"></div>
+    </div>
+
+
+    <script src="js/lib/jquery-3.2.1.min.js"></script>
+    <!-- 新增加的js文件 -->
+    <script src="js/lib/jqPaginator.min.js"></script>
+    <script src="./js/lib/ｃ.js"></script>
+    <!-- 不必引入，这是测试数据所在的文件 -->
+    <script src="js/src/json2.js"></script>
+    <script type="text/javascript">
+
+
+      new JsonShow(json)
+
+
+    </script>
+
+  </body>
+</html>

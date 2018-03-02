@@ -1,0 +1,70 @@
+{% extends "mdcs/extra/one_column.html" %}
+{% load staticfiles %}
+{% load auth_extras %}
+{% comment %}
+<!--
+################################################################################
+#
+# File Name: my_dashboard_my_records.html
+# Application: user_dashboard
+# Description:
+#
+# Author: Sharief Youssef
+#         sharief.youssef@nist.gov
+#
+#		  Xavier SCHMITT
+#		  xavier.schmitt@nist.gov
+#
+# Sponsor: National Institute of Standards and Technology
+#
+################################################################################
+-->
+{% endcomment %}
+{% block title %}
+    {% if user.is_staff %}
+        <h1><span>All groups</span></h1>
+    {% else %}
+        <h1><span>My groups</span></h1>
+    {% endif %}
+{% endblock %}
+{% block menu %}{% include 'mdcs/menus/main.html' with active_tab='profile' %}{% endblock %}
+{% block submenu %}{% include 'mdcs/menus/submenu/dashboard.html' with active_tab='tab5' %}{% endblock %}
+
+{% block content %}
+    <div id="body">
+	    <div class="width">
+            <!--<ul class="nav nav-tabs">-->
+                <!--{% if ispublished == None %} <li class="active"> {%else%} <li> {% endif%} <a href="/dashboard/records">All</a></li>-->
+                <!--{% if ispublished == True %} <li class="active"> {%else%} <li> {% endif%}<a href="/dashboard/records?ispublished=true">Public</a></li>-->
+                <!--{% if ispublished == False %} <li class="active"> {%else%} <li> {% endif%}<a href="/dashboard/records?ispublished=false">Private</a></li>-->
+            <!--</ul>-->
+            <span>
+                <div class="tpl-title">My management groups</div>
+            </span>
+            {% if mygroups%}
+                {% include 'dashboard/my_groups_table.html' with groups=mygroups %}
+            {%else%}
+                No groups found
+            {%endif%}
+            <div class="clear"></div>
+            <span>
+                <div class="tpl-title">Other users published records</div>
+            </span>
+            {% if OtherUsersXMLdatas%}
+                {% include 'dashboard/other_groups_table.html' with groups=ohtergroups %}
+            {%else%}
+                No other groups found
+            {%endif%}
+        </div>
+	</div>
+    <div class="clear"></div>
+<hr>
+{% endblock %}
+
+{% block extrajs %}
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script src="{% static 'inc/controllers/js/dashboard.js' %}"></script>
+  <script>
+    initBanner();
+  </script>
+{% endblock %}

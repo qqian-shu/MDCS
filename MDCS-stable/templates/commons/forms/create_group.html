@@ -1,0 +1,45 @@
+{% load i18n %}
+{% comment %}
+
+<!--
+################################################################################
+#
+# File Name: login.html
+# Application: templates
+# Description:
+#
+# Author: Pierre Francois Rigodiat
+#         pierre-francois.rigodiat@nist.gov
+#
+# Sponsor: National Institute of Standards and Technology
+#
+################################################################################
+-->
+{% endcomment %}
+<div style="margin-left:20px;">
+    <form action="" method="post">
+        <div style="display:none">
+            <input type="hidden" value="{{ csrf_token }}" name="csrfmiddlewaretoken">
+        </div>
+        <table>
+            <tr>
+                <td>
+                    <label for="id_group_name">Group Name:</label></td>
+                <td>{{ form.groupname }}</td>
+                <td>
+                    <label for="'id_group_name_error">{{ errors }}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="id_group_description">Group Description:</label></td>
+                <td>{{ form.description }}</td>
+            </tr>
+            {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}
+            <tr>
+                <td></td>
+                <td><button class="btn" type="submit">create</button></td>
+            </tr>
+        </table>
+    </form>
+</div>

@@ -1,0 +1,107 @@
+<!--
+################################################################################
+#
+# File Name: explore_detail_results.html
+# Application: templates
+# Description:
+#
+# Author: Sharief Youssef
+#         sharief.youssef@nist.gov
+#
+#		  Guillaume SOUSA AMARAL
+#		  guillaume.sousa@nist.gov
+#
+#
+#         Pierre Francois RIGODIAT
+#		  pierre-francois.rigodiat@nist.gov
+#
+# Sponsor: National Institute of Standards and Technology
+#
+################################################################################
+-->
+{% extends "mdcs/extra/one_column_1.html" %}
+
+{% load staticfiles %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="{% static 'resources/css/exploreTabs.css' %}"  media="screen" />
+<link rel="stylesheet" type="text/css" href="{% static 'resources/css/explore.css' %}"  media="screen" />
+<link rel="stylesheet" type="text/css" href="{% static 'resources/css/XMLTree.css' %}" media="screen" />
+<link rel="stylesheet" type="text/css" href="{% static 'resources/css/queryResult.css' %}" media="screen" />
+<link rel="stylesheet" type="text/css" href="{% static 'jsonShow/css/bootstrap.css' %}" media="screen" />
+<link rel="stylesheet" type="text/css" href="{% static 'jsonShow/css/main.css' %}" media="screen" />
+
+{% endblock %}
+
+{% block title %}<h1>{{title}}</h1>{% endblock %}
+{% block description %}From here you can view the detail of the selected result.{% endblock %}
+
+{% block menu %}{% include 'mdcs/menus/main.html' with active_tab='tab3' %}{% endblock %}
+
+{% block submenu %}
+<ul id="subnav-tab-1" class="tabbed">
+    <li>
+    	<div style="cursor:pointer">
+    		<a href="/explore">Query by Example</a>
+    	</div>
+   	</li>
+    <li class="current_page_item">
+    	<a href="/explore/keyword">Search by Keyword</a>
+    </li>
+	<li>
+        <div style="cursor:pointer">
+            <a href="/oai_pmh/explore/keyword">OAI-PMH Search by Keyword</a>
+        </div>
+    </li>
+</ul>
+
+<!--<div class="btn-group pull-right">-->
+   	<!--<span class="btn" style="text-decoration:none">-->
+        <!--<a href="/explore/showastree">Show as Tree</a>-->
+    <!--</span>-->
+<!--</div>-->
+
+
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="btn-group pull-right">
+   	<span class="btn" style="text-decoration:none">
+        <a href="/explore/showastree" style="text-decoration:none;color: black">Show as Tree</a>
+    </span>
+</div>
+<div class="btn-group pull-right">
+   	<span class="btn" onclick="backToResults();" style="text-decoration:none;color: black">Back to Results</span>
+</div>
+<div class="clearer">&nbsp;</div>
+<div id="jsonShow">
+        <!--<div id="navigation">-->
+        <!--</div>-->
+        <div id="content">
+        </div>
+    </div>
+
+    <script src="{% static 'jsonShow/js/lib/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'jsonShow/js/lib/jqPaginator.min.js' %}"></script>
+    <script src="{% static 'jsonShow/js/lib/bundle.js' %}"></script>
+    <script type="text/javascript">
+
+        var str="{{XMLHolder}}";
+        str=str.replace(/&quot;/g,'"');
+        console.log(str)
+        var  json_str = JSON.parse(str);
+        new JsonShow(json_str);
+
+
+    </script>
+<br></br>
+
+{% endblock %}
+
+
+{% block extrajs %}
+<script src="{% static 'inc/controllers/js/explore.js' %}"></script>
+{% endblock %}

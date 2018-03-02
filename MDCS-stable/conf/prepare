@@ -1,0 +1,4 @@
+#!/bin/sh
+sudo mongod --config /home/mdcs/Documents/MDCS-stable/conf/mongodb.conf
+service redis-server start
+celery -A mgi worker -l info -Ofair --purge
