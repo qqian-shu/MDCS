@@ -1,5 +1,5 @@
 ## 材料数据管理系统
-本项目基于NIST的MDCS系统https://github.com/usnistgov/MDCS进行开发。在MDCS系统的基础上，添加了以下功能：
+本项目基于NIST的MDCS系统(https://github.com/usnistgov/MDCS)进行开发。在MDCS系统的基础上，添加了以下功能：
 
 ## 权限控制
 关于数据的组权限控制功能,允许用户选择哪些用户可以访问自己的数据。
