@@ -25,7 +25,7 @@ urlpatterns = patterns('',
     url(r'^customize-template$', 'explore.views.explore_customize_template', name='expore-customize-template'),
     url(r'^perform-search$', 'explore.views.explore_perform_search', name='explore-perform-search'),
 
-    url(r'^showastree', 'explore.views.explore_detail_result_keyword_1', name='explore-detail-result-keyword_1'),
+    url(r'^detail_result_keyword_1$', 'explore.views.explore_detail_result_keyword_1', name='explore-detail-result-keyword_1'),
 
     url(r'^detail_result_keyword$', 'explore.views.explore_detail_result_keyword', name='explore-detail-result-keyword'),
 

@@ -360,7 +360,7 @@ def explore_detail_remote(request):
 def explore_detail_result_keyword_1(request) :
     template = loader.get_template('explore/explore_detail_results_keyword.html')
     # template = loader.get_template('explore/test_f.html')
-    context = explore_detail_result_process(req)
+    context = explore_detail_result_process(request)
     # context = explore_detail_result_process(request)
     return HttpResponse(template.render(context))
 
@@ -385,34 +385,16 @@ def explore_detail_result_keyword(request) :
     # print "type: ",type(context)
 
     # fhk_add_test1
-    print request
-    global req
-    req=request
-    print req
     data = tojson(request)
-    '''xml to json'''
-    # print 'data: ',type(data)
-    # print 'data.content: ',data.content
-    # print 'data.charset: ', data.charset
-    # print 'data.reason_phrase: ', data.reason_phrase
-    # print 'data.streaming: ', data.streaming
+
     '''check response data'''
     result=data.content
-    #print result
+
     i='\"@xmlns:xsi\": \"http://www.w3.org/2001/XMLSchema-instance\", '
     result=result.replace(i,'')
     u='127.0.0.1'
     result=result.replace(u,'0.0.0.0')
-    #print result
-    # result = '"array":'+result
-    # result = '\'{' + result + '}\''
-    # '''create needed  jsonstring'''
     title = XMLdata.get(request.GET['id'])['title']
-    # context = RequestContext(request, {
-    #     'XMLHolder': result,
-    #     'title': title
-    # })
-    # print context
 
     context = RequestContext(request, {
         'XMLHolder': result,
