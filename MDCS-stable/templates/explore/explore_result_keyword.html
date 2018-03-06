@@ -12,8 +12,7 @@
     <span style='font-weight:bold;'>{{title}}</span>
     <span style='font-weight:bold;'><a class="url" href="/explore/detail_result_keyword?id={{id}}">Table</a></span>
     <span style='font-weight:bold;'><a class="url" href="/explore/detail_result_keyword_1?id={{id}}">Tree</a></span>
-    <span style='color:grey;'>{{template_name}}</span>
-    {% if canEdit and modification %}
+    <span style='color:grey;'>{{template_name}}</span>{% if canEdit and modification %}
     <a href="/curate/enter-data?id={{id}}"><span class="icon edit"></span></a>
     {% endif %}
     {% if canDelete and modification %}

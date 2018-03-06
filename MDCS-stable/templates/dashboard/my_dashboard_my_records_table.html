@@ -58,9 +58,105 @@
                 <span class="icon legend changeOwner" onclick="changeOwnerRecord('{{XMLdata_id}}')">
                     Change Owner
                 </span>
+                 <span class="icon legend update" onclick="XMLDataSaved('{{XMLdata_id}}')">
+                    Group
+                </span>
                 {% endwith%}
             </td>
         </tr>
     {% endwith %}
     {% endfor %}
 </table>
+
+<div id="dialog-saved-message" title="Select Groups XML Data Saved" style="display:none;">
+<p></p>
+  <p>
+        <div style="display:none">
+        </div>
+        <div>
+        <table>
+             <tr>
+                 <td width="100px"><label >Group Name</label></td>
+                 <td width="100px"><label >Description</label></td>
+                 <td> </td>
+            </tr>
+        </table>
+            </div>
+
+     <form  id="form_group" action="" method="post">
+        <div style="display:none">
+            <input type="hidden" value="{{ csrf_token }}" name="csrfmiddlewaretoken">
+            <input id="XMLdata_id" type="hidden" name="XMLdata_id">
+
+        </div>
+        <div>
+        <table>
+             {% for managegroup in myGroup %}
+             <tr>
+                <td width="100px">{{managegroup.groupname}}</td>
+                  <td width="100px">{{managegroup.description}}</td>
+                <td>
+                    <input name="groupid" type="checkbox" class="btn btn-warning btn-xs"  value="{{managegroup.id}}">
+                </td>
+            </tr>
+            {% endfor %}
+             {% for managegroup in otherGroup %}
+            <tr>
+                <td width="100px">{{managegroup.groupname}}</td>
+                  <td width="100px">{{managegroup.description}}</td>
+                <td>
+                    <input name="groupid" type="checkbox" class="btn btn-danger btn-xs"  value="{{managegroup.id}}">
+                </td>
+            </tr>
+             {% endfor %}
+
+        </table>
+            </div>
+    </form>
+    </p>
+</div>
+{% block extrajs %}
+
+<script>
+XMLDataSaved = function(xmlID)
+{
+    console.log('BEGIN [save data to group]');
+
+    document.getElementById("XMLdata_id").value=xmlID;
+
+    $(function() {
+        $( "#dialog-saved-message" ).dialog({
+            modal: true,
+            close: function(){
+                window.location = "/dashboard/records"
+            },
+            buttons: {
+                Ok: function() {
+                   var formData = new FormData($( "#form_group" )[0]);
+                   $.ajax({
+                        url : "/curate/save_data_groups",
+                        type: 'POST',
+                        data: formData ,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        async:false,
+                        success : function(data) {
+                            $( "#dialog-saved-message" ).dialog( "close" );
+                        },
+                        error:function(data){
+//                            $( "#dialog-saved-message" ).dialog( "close" );
+                            $("#saveErrorMessage").html(data.responseText);
+                        },
+                    });
+
+                }
+            }
+        });
+    });
+
+    console.log('END [save data to group]');
+}
+
+</script>
+{% endblock %}

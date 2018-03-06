@@ -1,481 +1,637 @@
-[26/Jun/2017 21:33:55] ERROR [django.request:256] Internal Server Error: /newpermission/creategroup
-Traceback (most recent call last):
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 108, in get_response
-    response = middleware_method(request)
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/middleware/common.py", line 74, in process_request
-    if (not urlresolvers.is_valid_path(request.path_info, urlconf) and
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 646, in is_valid_path
-    resolve(path, urlconf)
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 521, in resolve
-    return get_resolver(urlconf).resolve(path)
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 367, in resolve
-    sub_match = pattern.resolve(new_path)
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 367, in resolve
-    sub_match = pattern.resolve(new_path)
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 239, in resolve
-    return ResolverMatch(self.callback, args, kwargs, self.name)
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 246, in callback
-    self._callback = get_callable(self._callback_str)
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/utils/lru_cache.py", line 101, in wrapper
-    result = user_function(*args, **kwds)
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/urlresolvers.py", line 105, in get_callable
-    mod = import_module(mod_name)
-  File "/home/mdcs/anaconda2/lib/python2.7/importlib/__init__.py", line 37, in import_module
-    __import__(name)
-  File "/home/mdcs/Documents/MDCS-stable/provide/views.py", line 8, in <module>
-    from provide.forms import CustomGroupForm
-  File "/home/mdcs/Documents/MDCS-stable/provide/forms.py", line 18, in <module>
-    class CustomGroupForm(forms.ModelForm):
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/forms/models.py", line 274, in __new__
-    "needs updating." % name
-ImproperlyConfigured: Creating a ModelForm without either the 'fields' attribute or the 'exclude' attribute is prohibited; form CustomGroupForm needs updating.
-[26/Jun/2017 21:36:52] ERROR [django.request:256] Internal Server Error: /newpermission/creategroup
+[23/Aug/2017 00:11:47] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/provide/views.py", line 20, in add_group
-    template = loader.get_template('/provide/add_group.html')
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/template/loader.py", line 46, in get_template
-    raise TemplateDoesNotExist(template_name)
-TemplateDoesNotExist: /provide/add_group.html
-[26/Jun/2017 21:37:55] ERROR [django.request:256] Internal Server Error: /newpermission/creategroup
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[23/Aug/2017 00:12:03] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 22, in _wrapped_view
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/provide/views.py", line 20, in add_group
-    template = loader.get_template('provide/add_group.html')
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/template/loader.py", line 46, in get_template
-    raise TemplateDoesNotExist(template_name)
-TemplateDoesNotExist: provide/add_group.html
-[26/Jun/2017 21:38:26] ERROR [django.request:256] Internal Server Error: /newpermission/creategroup
-Traceback (most recent call last):
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 223, in get_response
-    response = middleware_method(request, response)
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/middleware/clickjacking.py", line 31, in process_response
-    if response.get('X-Frame-Options', None) is not None:
-AttributeError: 'SafeText' object has no attribute 'get'
-[26/Jun/2017 21:46:26] ERROR [django.request:256] Internal Server Error: /newpermission/creategroup
-Traceback (most recent call last):
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 223, in get_response
-    response = middleware_method(request, response)
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/middleware/clickjacking.py", line 31, in process_response
-    if response.get('X-Frame-Options', None) is not None:
-AttributeError: 'SafeText' object has no attribute 'get'
-[27/Jun/2017 01:41:56] ERROR [django.request:256] Internal Server Error: /newpermission/creategroup
-Traceback (most recent call last):
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 223, in get_response
-    response = middleware_method(request, response)
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/middleware/clickjacking.py", line 31, in process_response
-    if response.get('X-Frame-Options', None) is not None:
-AttributeError: 'SafeText' object has no attribute 'get'
-[27/Jun/2017 01:42:57] ERROR [django.request:256] Internal Server Error: /newpermission/creategroup
-Traceback (most recent call last):
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 223, in get_response
-    response = middleware_method(request, response)
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/middleware/clickjacking.py", line 31, in process_response
-    if response.get('X-Frame-Options', None) is not None:
-AttributeError: 'SafeText' object has no attribute 'get'
-[27/Jun/2017 02:45:57] ERROR [django.request:256] Internal Server Error: /newpermission/creategroup
-Traceback (most recent call last):
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 151, in get_response
-    % (callback.__module__, view_name))
-ValueError: The view provide.views.create_group didn't return an HttpResponse object. It returned None instead.
-[27/Jun/2017 02:50:17] WARNING [django.request:170] Not Found: /newpermission/
-[27/Jun/2017 02:59:14] WARNING [django.request:170] Not Found: /newpermission/groups
-[27/Jun/2017 03:26:09] WARNING [django.request:170] Not Found: /newpermission/groups
-[27/Jun/2017 03:30:55] WARNING [django.request:170] Not Found: /oai
-[27/Jun/2017 03:31:13] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fcff34621d0>.
-[27/Jun/2017 03:31:22] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fcff346d470>.
-[27/Jun/2017 03:31:22] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fcff3462170>.
-[27/Jun/2017 03:31:22] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fd00496ead0>.
-[27/Jun/2017 03:31:22] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fd00496eb30>.
-[27/Jun/2017 03:31:22] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fd00499d0b0>.
-[27/Jun/2017 03:31:22] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fd00499d5f0>.
-[27/Jun/2017 03:31:53] WARNING [django.request:170] Not Found: /oai_pmh
-[27/Jun/2017 03:32:15] WARNING [django.request:170] Not Found: /oai_pmh/api
-[27/Jun/2017 03:32:28] WARNING [django.request:170] Not Found: /oai_pmh/api/all
-[27/Jun/2017 03:32:55] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fcff346d410>.
-[27/Jun/2017 03:33:06] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fd004962650>.
-[27/Jun/2017 03:33:14] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fcff346d830>.
-[27/Jun/2017 03:33:32] WARNING [django.request:170] Not Found: /oai_pmh/api/select/all/
-[27/Jun/2017 03:36:30] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fcff346d830>.
-[27/Jun/2017 03:36:30] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fcff346d830>.
-[27/Jun/2017 03:36:30] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fd004931ef0>.
-[27/Jun/2017 03:36:30] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fd00499da70>.
-[27/Jun/2017 03:36:30] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fd00499da70>.
-[27/Jun/2017 03:36:30] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fd00496ead0>.
-[27/Jun/2017 03:36:41] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fd00496eb90>.
-[27/Jun/2017 03:49:27] WARNING [django.request:170] Not Found: //rest/explore/data/download
-[27/Jun/2017 03:49:32] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fd004931ef0>.
-[27/Jun/2017 03:49:52] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fcff34621d0>.
-[27/Jun/2017 03:50:23] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7facd1849110>.
-[03/Jul/2017 03:11:02] ERROR [django.request:256] Internal Server Error: /newpermission/groups
-Traceback (most recent call last):
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 151, in get_response
-    % (callback.__module__, view_name))
-ValueError: The view provide.views.group_detail didn't return an HttpResponse object. It returned None instead.
-[24/Oct/2017 02:53:38] WARNING [django.request:170] Not Found: /favicon.ico
-[24/Oct/2017 02:53:38] WARNING [django.request:170] Not Found: /favicon.ico
-[29/Oct/2017 21:47:14] ERROR [django.request:256] Internal Server Error: /compose/load_xml
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[23/Aug/2017 00:12:04] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/compose/ajax.py", line 179, in load_xml
-    transform = etree.XSLT(xslt)
-  File "src/lxml/xslt.pxi", line 409, in lxml.etree.XSLT.__init__ (src/lxml/lxml.etree.c:177777)
-XSLTParseError: xsl:value-of : could not compile select expression 'name(.youdia)'
-[29/Oct/2017 21:49:41] ERROR [django.request:256] Internal Server Error: /compose/load_xml
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[23/Aug/2017 00:12:08] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/compose/ajax.py", line 179, in load_xml
-    transform = etree.XSLT(xslt)
-  File "src/lxml/xslt.pxi", line 409, in lxml.etree.XSLT.__init__ (src/lxml/lxml.etree.c:177777)
-XSLTParseError: xsl:value-of : could not compile select expression 'name(.youdia)'
-[30/Oct/2017 02:28:49] WARNING [django.request:170] Not Found: /api/analysis/get-distinct-company
-[30/Oct/2017 02:30:00] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fb9bed556b0>.
-[30/Oct/2017 02:30:33] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f0ca74536b0>.
-[30/Oct/2017 02:34:49] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f18a4b436b0>.
-[30/Oct/2017 02:36:34] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f4784e966b0>.
-[30/Oct/2017 02:41:03] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f5dcfdd16b0>.
-[30/Oct/2017 02:45:56] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f4d5c18b770>.
-[30/Oct/2017 03:01:26] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe9e7d99770>.
-[30/Oct/2017 03:02:17] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f30b290b770>.
-[30/Oct/2017 03:03:40] ERROR [django.request:256] Internal Server Error: /explore/detail_result_keyword
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 04:37:23] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/views.py", line 348, in explore_detail_result_keyword
-    context = explore_detail_result_process(request)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/views.py", line 387, in explore_detail_result_process
-    data=explore_detail_data_download(result_id)
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/views/generic/base.py", line 71, in view
-    return self.dispatch(request, *args, **kwargs)
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
-    return view_func(*args, **kwargs)
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/rest_framework/views.py", line 383, in dispatch
-    request = self.initialize_request(request, *args, **kwargs)
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/rest_framework/views.py", line 308, in initialize_request
-    parser_context=parser_context)
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/rest_framework/request.py", line 136, in __init__
-    self.parser_context['encoding'] = request.encoding or settings.DEFAULT_CHARSET
-AttributeError: 'unicode' object has no attribute 'encoding'
-[30/Oct/2017 03:05:06] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc02f391770>.
-[30/Oct/2017 03:06:19] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f9b47e91770>.
-[30/Oct/2017 03:06:19] ERROR [django.request:256] Internal Server Error: /explore/detail_result_keyword
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 04:37:25] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/views.py", line 348, in explore_detail_result_keyword
-    context = explore_detail_result_process(request)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/views.py", line 388, in explore_detail_result_process
-    print 'data: ',data.getresponse().read()
-AttributeError: 'HttpResponse' object has no attribute 'getresponse'
-[30/Oct/2017 03:06:41] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fd745038770>.
-[30/Oct/2017 03:06:41] ERROR [django.request:256] Internal Server Error: /explore/detail_result_keyword
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 04:37:50] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/views.py", line 348, in explore_detail_result_keyword
-    context = explore_detail_result_process(request)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/views.py", line 388, in explore_detail_result_process
-    print 'data: ',data.read()
-AttributeError: 'HttpResponse' object has no attribute 'read'
-[30/Oct/2017 03:07:49] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f1d35139770>.
-[30/Oct/2017 03:19:14] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f10c56a5710>.
-[30/Oct/2017 03:23:01] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fd09add6710>.
-[30/Oct/2017 03:26:22] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fec54075710>.
-[30/Oct/2017 03:27:22] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f1e61562710>.
-[30/Oct/2017 03:52:42] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f1d4c284710>.
-[30/Oct/2017 03:52:42] ERROR [django.request:256] Internal Server Error: /explore/detail_result_keyword
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 04:37:52] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/views.py", line 348, in explore_detail_result_keyword
-    context = explore_detail_result_process(request)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/views.py", line 388, in explore_detail_result_process
-    print 'data: ',data
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/http/response.py", line 346, in serialize
-    return self.serialize_headers() + b'\r\n\r\n' + self.content
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/template/response.py", line 178, in content
-    raise ContentNotRenderedError('The response content must be '
-ContentNotRenderedError: The response content must be rendered before it can be accessed.
-[30/Oct/2017 03:53:19] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f2341363710>.
-[30/Oct/2017 03:58:42] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe07af91710>.
-[30/Oct/2017 03:59:16] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe07af91e30>.
-[30/Oct/2017 04:01:00] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f73569cb710>.
-[30/Oct/2017 04:02:46] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fbac4441710>.
-[30/Oct/2017 04:10:18] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f840a950710>.
-[30/Oct/2017 06:24:28] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f1e8d168710>.
-[30/Oct/2017 06:26:03] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fdc97d0f770>.
-[31/Oct/2017 00:03:54] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f4f9bfd4770>.
-[31/Oct/2017 00:04:41] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f5840f77770>.
-[31/Oct/2017 00:04:41] ERROR [django.request:256] Internal Server Error: /explore/detail_result_keyword
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 04:38:21] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/views.py", line 350, in explore_detail_result_keyword
-    data = tojson(request)
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/views/generic/base.py", line 71, in view
-    return self.dispatch(request, *args, **kwargs)
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
-    return view_func(*args, **kwargs)
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/rest_framework/views.py", line 402, in dispatch
-    self.response = self.finalize_response(request, response, *args, **kwargs)
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/rest_framework/views.py", line 333, in finalize_response
-    % type(response)
-AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<type 'str'>`
-[31/Oct/2017 00:23:00] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f5bb9960770>.
-[31/Oct/2017 00:37:48] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f291e90d770>.
-[31/Oct/2017 00:38:48] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f59285a2770>.
-[31/Oct/2017 00:42:38] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f6afed10770>.
-[31/Oct/2017 00:42:38] ERROR [django.request:256] Internal Server Error: /explore/detail_result_keyword
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 04:38:23] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/views.py", line 351, in explore_detail_result_keyword
-    print 'data: ', data
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/http/response.py", line 346, in serialize
-    return self.serialize_headers() + b'\r\n\r\n' + self.content
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/template/response.py", line 178, in content
-    raise ContentNotRenderedError('The response content must be '
-ContentNotRenderedError: The response content must be rendered before it can be accessed.
-[31/Oct/2017 00:43:31] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f350f289770>.
-[31/Oct/2017 02:16:06] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f0250bc07d0>.
-[31/Oct/2017 02:16:06] ERROR [django.request:256] Internal Server Error: /explore/detail_result_keyword
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 04:38:44] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/views.py", line 351, in explore_detail_result_keyword
-    print 'data: ', data.read()
-AttributeError: 'HttpResponse' object has no attribute 'read'
-[31/Oct/2017 02:19:57] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f4ac5e777d0>.
-[31/Oct/2017 02:20:58] ERROR [django.request:256] Internal Server Error: /compose/load_xml
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 04:38:46] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/compose/ajax.py", line 179, in load_xml
-    transform = etree.XSLT(xslt)
-  File "src/lxml/xslt.pxi", line 409, in lxml.etree.XSLT.__init__ (src/lxml/lxml.etree.c:177777)
-XSLTParseError: xsl:value-of : could not compile select expression 'name(.youdia)'
-[31/Oct/2017 02:21:06] ERROR [django.request:256] Internal Server Error: /compose/load_xml
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 04:39:12] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/compose/ajax.py", line 179, in load_xml
-    transform = etree.XSLT(xslt)
-  File "src/lxml/xslt.pxi", line 409, in lxml.etree.XSLT.__init__ (src/lxml/lxml.etree.c:177777)
-XSLTParseError: xsl:value-of : could not compile select expression 'name(.youdia)'
-[31/Oct/2017 02:26:57] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f4ac4613230>.
-[31/Oct/2017 02:29:36] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f4ac46137d0>.
-[31/Oct/2017 02:55:27] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f57c758f7d0>.
-[31/Oct/2017 02:56:33] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fdf0a47a7d0>.
-[31/Oct/2017 03:02:41] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f5c1c8c87d0>.
-[31/Oct/2017 03:02:41] ERROR [django.request:256] Internal Server Error: /explore/detail_result_keyword
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 04:39:17] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/views.py", line 352, in explore_detail_result_keyword
-    print data[4]
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/http/response.py", line 208, in __getitem__
-    return self._headers[header.lower()][1]
-AttributeError: 'int' object has no attribute 'lower'
-[31/Oct/2017 03:05:23] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fce48b007d0>.
-[31/Oct/2017 03:05:23] ERROR [django.request:256] Internal Server Error: /explore/detail_result_keyword
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 04:39:19] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/views.py", line 352, in explore_detail_result_keyword
-    print type(data[4])
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/http/response.py", line 208, in __getitem__
-    return self._headers[header.lower()][1]
-AttributeError: 'int' object has no attribute 'lower'
-[31/Oct/2017 03:12:55] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fa05865b830>.
-[31/Oct/2017 03:22:46] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7ff8faa8d7d0>.
-[31/Oct/2017 03:22:46] ERROR [django.request:256] Internal Server Error: /explore/detail_result_keyword
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 04:39:28] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/views.py", line 355, in explore_detail_result_keyword
-    result=re.findall(r'\{(.*)\}')
-TypeError: findall() takes at least 2 arguments (1 given)
-[31/Oct/2017 03:24:46] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f3785d6e7d0>.
-[31/Oct/2017 03:24:46] ERROR [django.request:256] Internal Server Error: /explore/detail_result_keyword
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 04:39:30] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/views.py", line 355, in explore_detail_result_keyword
-    result=re.match(r'\{(.*)\}')
-TypeError: match() takes at least 2 arguments (1 given)
-[31/Oct/2017 03:29:30] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f05026ca7d0>.
-[31/Oct/2017 03:29:30] ERROR [django.request:256] Internal Server Error: /explore/detail_result_keyword
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 04:40:04] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/views.py", line 355, in explore_detail_result_keyword
-    result=re.match(r'\{(.*)\}',data)
-  File "/home/mdcs/anaconda2/lib/python2.7/re.py", line 141, in match
-    return _compile(pattern, flags).match(string)
-TypeError: expected string or buffer
-[31/Oct/2017 03:31:24] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f07616e17d0>.
-[31/Oct/2017 03:31:24] ERROR [django.request:256] Internal Server Error: /explore/detail_result_keyword
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 04:40:06] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/views.py", line 355, in explore_detail_result_keyword
-    result=re.match(r'\{\.*\}',data)
-  File "/home/mdcs/anaconda2/lib/python2.7/re.py", line 141, in match
-    return _compile(pattern, flags).match(string)
-TypeError: expected string or buffer
-[31/Oct/2017 03:34:17] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f59e0d957d0>.
-[31/Oct/2017 03:34:17] ERROR [django.request:256] Internal Server Error: /explore/detail_result_keyword
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 04:40:09] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/views.py", line 355, in explore_detail_result_keyword
-    result=re.match(r'\{.*\}$',data)
-  File "/home/mdcs/anaconda2/lib/python2.7/re.py", line 141, in match
-    return _compile(pattern, flags).match(string)
-TypeError: expected string or buffer
-[31/Oct/2017 03:36:54] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f531a7877d0>.
-[31/Oct/2017 03:42:57] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fd5775507d0>.
-[31/Oct/2017 03:44:15] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f490790b7d0>.
-[31/Oct/2017 03:51:31] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f22cf2cc830>.
-[31/Oct/2017 03:55:25] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f22e13678f0>.
-[31/Oct/2017 03:59:10] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f6d3e694830>.
-[31/Oct/2017 04:02:49] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f6bfa636830>.
-[31/Oct/2017 04:02:50] ERROR [django.request:256] Internal Server Error: /explore/detail_result_keyword
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 05:08:45] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/views.py", line 360, in explore_detail_result_keyword
-    i=re.sub('"@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance", ',result)
-TypeError: sub() takes at least 3 arguments (2 given)
-[31/Oct/2017 04:07:50] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f9e46bce7d0>.
-[31/Oct/2017 04:08:13] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f629bfd17d0>.
-[31/Oct/2017 04:08:38] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc2535917d0>.
-[31/Oct/2017 04:08:48] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc253591ef0>.
-[31/Oct/2017 05:02:45] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc253591d10>.
-[31/Oct/2017 23:00:35] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f94fd5351d0>.
-[31/Oct/2017 23:00:37] WARNING [django.request:170] Not Found: /jsonShow/css/bootstrap.css
-[31/Oct/2017 23:00:37] WARNING [django.request:170] Not Found: /jsonShow/css/main.css
-[31/Oct/2017 23:22:50] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f43e2289dd0>.
-[31/Oct/2017 23:22:52] WARNING [django.request:170] Not Found: /jsonShow/css/bootstrap.css
-[31/Oct/2017 23:22:52] WARNING [django.request:170] Not Found: /jsonShow/css/main.css
-[31/Oct/2017 23:22:52] WARNING [django.request:170] Not Found: /explore/jsonShow/js/lib/jquery-3.2.1.min.js
-[31/Oct/2017 23:22:52] WARNING [django.request:170] Not Found: /explore/jsonShow/js/lib/bundle.js
-[31/Oct/2017 23:22:52] WARNING [django.request:170] Not Found: /explore/jsonShow/js/lib/jqPaginator.min.js
-[31/Oct/2017 23:22:53] WARNING [django.request:170] Not Found: /explore/jsonShow/js/lib/jqPaginator.min.js
-[31/Oct/2017 23:22:54] WARNING [django.request:170] Not Found: /explore/jsonShow/js/lib/bundle.js
-[31/Oct/2017 23:23:46] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fec8a8fb890>.
-[31/Oct/2017 23:23:48] WARNING [django.request:170] Not Found: /jsonShow/css/bootstrap.css
-[31/Oct/2017 23:23:48] WARNING [django.request:170] Not Found: /jsonShow/css/main.css
-[31/Oct/2017 23:23:48] WARNING [django.request:170] Not Found: /explore/jsonShow/js/lib/jquery-3.2.1.min.js
-[31/Oct/2017 23:23:48] WARNING [django.request:170] Not Found: /explore/jsonShow/js/lib/jqPaginator.min.js
-[31/Oct/2017 23:23:48] WARNING [django.request:170] Not Found: /explore/jsonShow/js/lib/bundle.js
-[31/Oct/2017 23:23:49] WARNING [django.request:170] Not Found: /explore/jsonShow/js/lib/jqPaginator.min.js
-[31/Oct/2017 23:23:50] WARNING [django.request:170] Not Found: /explore/jsonShow/js/lib/bundle.js
-[31/Oct/2017 23:31:35] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f57a3a93a10>.
-[31/Oct/2017 23:31:52] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f57a2a6f1d0>.
-[31/Oct/2017 23:34:42] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f489e9c5a70>.
-[31/Oct/2017 23:48:25] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f06f00aea10>.
-[31/Oct/2017 23:52:24] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f0d6f946a70>.
-[31/Oct/2017 23:53:10] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7ff704f95a10>.
-[01/Nov/2017 00:12:39] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f89ffb93950>.
-[01/Nov/2017 00:18:30] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f7e1c27f950>.
-[01/Nov/2017 00:19:47] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f20b64fc950>.
-[01/Nov/2017 00:23:04] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fede006c950>.
-[01/Nov/2017 00:53:30] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fede006cf50>.
-[01/Nov/2017 01:03:38] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f75c98a1950>.
-[01/Nov/2017 01:05:43] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fb5a0ebb950>.
-[01/Nov/2017 01:12:42] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fba198839b0>.
-[01/Nov/2017 01:12:48] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fba19883e90>.
-[01/Nov/2017 01:29:44] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f23081c69b0>.
-[01/Nov/2017 01:53:35] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fcd002fb9b0>.
-[01/Nov/2017 01:54:48] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f52fae8a9b0>.
-[01/Nov/2017 01:55:23] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7ff55ab8b9b0>.
-[01/Nov/2017 01:55:47] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f9259bc09b0>.
-[01/Nov/2017 01:55:51] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f9259bc0e90>.
-[01/Nov/2017 02:11:34] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f819c04a950>.
-[01/Nov/2017 06:05:01] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f819c04a4d0>.
-[01/Nov/2017 06:07:32] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f819c04a4d0>.
-[01/Nov/2017 06:10:05] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f755a2ca9b0>.
-[01/Nov/2017 06:11:37] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc5dab0f950>.
-[01/Nov/2017 06:19:04] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f8ff5c6f950>.
-[01/Nov/2017 06:20:17] WARNING [django.request:170] Not Found: /explore/detail_resul/t_keyword
-[01/Nov/2017 06:20:21] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f5f00bc8dd0>.
-[01/Nov/2017 06:21:58] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe736888950>.
-[01/Nov/2017 06:23:14] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f41b9eb49b0>.
-[01/Nov/2017 06:28:10] WARNING [django.request:170] Not Found: /favicon.ico
-[01/Nov/2017 06:28:42] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f5e5cad29b0>.
-[01/Nov/2017 06:33:03] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f022ca059b0>.
-[01/Nov/2017 06:35:46] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f1f7d61d9b0>.
-[01/Nov/2017 06:43:51] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe3591739b0>.
-[01/Nov/2017 07:03:54] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f6002f4b9b0>.
-[01/Nov/2017 07:20:32] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fb1362369b0>.
-[03/Nov/2017 00:20:35] ERROR [django.request:256] Internal Server Error: /compose/load_xml
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 05:08:46] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/compose/ajax.py", line 179, in load_xml
-    transform = etree.XSLT(xslt)
-  File "src/lxml/xslt.pxi", line 409, in lxml.etree.XSLT.__init__ (src/lxml/lxml.etree.c:177777)
-XSLTParseError: xsl:value-of : could not compile select expression 'name(.youdia)'
-[03/Nov/2017 00:20:53] ERROR [django.request:256] Internal Server Error: /compose/load_xml
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 05:08:48] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/compose/ajax.py", line 179, in load_xml
-    transform = etree.XSLT(xslt)
-  File "src/lxml/xslt.pxi", line 409, in lxml.etree.XSLT.__init__ (src/lxml/lxml.etree.c:177777)
-XSLTParseError: xsl:value-of : could not compile select expression 'name(.youdia)'
-[03/Nov/2017 00:21:03] ERROR [django.request:256] Internal Server Error: /compose/load_xml
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 05:08:53] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/compose/ajax.py", line 179, in load_xml
-    transform = etree.XSLT(xslt)
-  File "src/lxml/xslt.pxi", line 409, in lxml.etree.XSLT.__init__ (src/lxml/lxml.etree.c:177777)
-XSLTParseError: xsl:value-of : could not compile select expression 'name(.youdia)'
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 05:09:19] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+Traceback (most recent call last):
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 05:09:20] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+Traceback (most recent call last):
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 05:09:27] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+Traceback (most recent call last):
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 05:09:56] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+Traceback (most recent call last):
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 05:10:09] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+Traceback (most recent call last):
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 05:10:16] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+Traceback (most recent call last):
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 05:10:27] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+Traceback (most recent call last):
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 05:10:27] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+Traceback (most recent call last):
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 05:10:29] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+Traceback (most recent call last):
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 05:10:32] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+Traceback (most recent call last):
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 05:13:01] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+Traceback (most recent call last):
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 05:13:17] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+Traceback (most recent call last):
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 05:13:18] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+Traceback (most recent call last):
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 05:13:20] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+Traceback (most recent call last):
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 05:13:32] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+Traceback (most recent call last):
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 05:13:32] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+Traceback (most recent call last):
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 05:13:34] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+Traceback (most recent call last):
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 05:45:01] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+Traceback (most recent call last):
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 05:45:03] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+Traceback (most recent call last):
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 06:32:09] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+Traceback (most recent call last):
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 06:32:12] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+Traceback (most recent call last):
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 07:20:24] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+Traceback (most recent call last):
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 07:20:36] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+Traceback (most recent call last):
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 07:20:39] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+Traceback (most recent call last):
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[25/Dec/2017 07:28:37] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+Traceback (most recent call last):
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
+    template = loader.get_template('explore/explore_result_keyword.html')
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 527, in get_result_list
+    
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.

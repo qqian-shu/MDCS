@@ -30,7 +30,6 @@ class KeywordForm(forms.Form):
 
         #We retrieve all registries (data providers)
         registries = OaiRegistry.objects(isDeactivated=False).order_by('name')
-        # print registries
 
         for registry in registries:
             #We add them

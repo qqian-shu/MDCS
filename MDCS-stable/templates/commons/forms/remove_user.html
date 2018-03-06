@@ -1,0 +1,61 @@
+{% load i18n %}
+{% comment %}
+
+<!--
+################################################################################
+#
+# File Name: add_user_to_group.html
+# Application: templates
+# Description:
+#
+# Author: ZzWU
+#         best_distance@126.com
+# Computer Engineering and Science School of Shanghai University
+# Sponsor: National Institute of Standards and Technology
+#
+################################################### #############################
+-->
+{% endcomment %}
+<div style="margin-left:20px;">
+    <form action="" method="post">
+        <input type="hidden" value="{{ csrf_token }}" name="csrfmiddlewaretoken"/>
+        <div style="display:none">
+
+        </div>
+
+        <table>
+             <tr>
+                <td width="190px">
+                    <input type="hidden"  name="groupid" value="{{group.id}}">
+                    <label >Group Name : {{group.groupname}}</label></td>
+                <td>
+                    <label ></label>
+                </td>
+                  <td>
+                     <label ></label>
+                </td>
+            </tr>
+            {% if userList.user %}
+             <tr>
+                <td> <input type="hidden" value="{{ csrf_token }}" name="csrfmiddlewaretoken"/></td>
+                  <td width="100px"><input type="hidden"  name="userid" value="{{userList.id}}">{{userList.user}}</td>
+                <td>
+                    <button class="btn" type="submit">remove</button>
+                </td>
+            </tr>
+            {% else %}
+                {% for removeuser in userList %}
+                 <tr>
+
+                    <td> </td>
+                      <td width="100px"><input type="hidden"  name="userid" value="{{removeuser.id}}">{{removeuser.user}} </td>
+                    <td>
+                        <button class="btn" type="submit" formaction="./removeUserfromGroup">remove</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% endif %}
+        </table>
+
+    </form>
+</div>

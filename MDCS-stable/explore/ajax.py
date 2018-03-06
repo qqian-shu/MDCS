@@ -13,7 +13,7 @@
 # Sponsor: National Institute of Standards and Technology (NIST)
 #
 ################################################################################
-
+import cPickle
 from django.http import HttpResponse
 from django.conf import settings
 from io import BytesIO
@@ -33,6 +33,8 @@ from mgi.common import SCHEMA_NAMESPACE, xpath_to_dot_notation
 from mgi.models import Template, SavedQuery, XMLdata, Instance, TemplateVersion
 from django.template import loader, RequestContext
 from django.contrib import messages
+
+from provide.models import dataProfile, UserProfile
 from utils.XSDParser.parser import generate_form
 from utils.XSDParser.renderer import DefaultRenderer
 from utils.XSDParser.renderer.checkbox import CheckboxRenderer
@@ -304,11 +306,14 @@ def execute_query(request):
         if len(instances) == 0:
             response_dict = {'errors': 'zero'}
         else:
+            temp1 = get_result_list(instances, request) # add by wuzhenzhen
+
             htmlTree = html.fromstring(query_form)
             query = fieldsToQuery(request, htmlTree)            
             request.session['queryExplore'] = query
             json_instances = []
-            for instance in instances:
+            # for instance in instances:  # modified by wuzhenzhen
+            for instance in temp1:
                 json_instances.append(instance.to_json()) 
             request.session['instancesExplore'] = json_instances
     else:
@@ -434,92 +439,84 @@ def get_results_by_instance_keyword(request):
         userSchemas = []
         onlySuggestions = True
 
+
     #We get all template versions for the given schemas
     #First, we take care of user defined schema
     templatesIDUser = Template.objects(title__in=userSchemas).distinct(field="id")
     templatesIDUser = [str(x) for x in templatesIDUser]
-    print 'templatesIDUser: ',templatesIDUser
 
     #Take care of the rest, with versions
     templatesVersions = Template.objects(title__in=schemas).distinct(field="templateVersion")
-    print 'templatesVersions: ', templatesVersions
 
     #We get all templates ID, for all versions
     allTemplatesIDCommon = TemplateVersion.objects(pk__in=templatesVersions, isDeleted=False).distinct(field="versions")
-    print 'allTemplatesIDCommon: ', allTemplatesIDCommon
-
     #We remove the removed version
     allTemplatesIDCommonRemoved = TemplateVersion.objects(pk__in=templatesVersions, isDeleted=False).distinct(field="deletedVersions")
-    print 'allTemplatesIDCommonRemoved: ', allTemplatesIDCommonRemoved
-
     templatesIDCommon = list(set(allTemplatesIDCommon) - set(allTemplatesIDCommonRemoved))
-    print 'templatesIDCommon: ', templatesIDCommon
+
 
     templatesID = templatesIDUser + templatesIDCommon
-    print 'templatesID: ', templatesID
-
-
-
-    #Information has been searched here
-    # instanceResults = XMLdata.testmongodb()
-    # print '###',instanceResults
     instanceResults = XMLdata.executeFullTextQuery(keyword, templatesID)
-    print '@@@',instanceResults
-
-    print 'instanceResults: ',instanceResults
     if len(instanceResults) > 0:
         if not onlySuggestions:
             xsltPath = os.path.join(settings.SITE_ROOT, 'static/resources/xsl/xml2html.xsl')
             xslt = etree.parse(xsltPath)
             transform = etree.XSLT(xslt)
+            print 'before load template'
             template = loader.get_template('explore/explore_result_keyword.html')
+            print 'after load template'
+        temp1=get_result_list(instanceResults,request)
 
+        print 'temp1'
         for instanceResult in instanceResults:
-            if not onlySuggestions:
-                custom_xslt = False
-                xml_content = instanceResult['xml_file']
-                results.append({'title': instanceResult['title'],
-                                'content': xml_content,
-                                'id': str(instanceResult['_id'])})
-                dom = etree.XML(xml_content.encode('utf-8'))
-                #Check if a custom list result XSLT has to be used
-                try:
-                    schema = Template.objects.get(pk=instanceResult['schema'])
-                    if schema.ResultXsltList:
-                        listXslt = etree.parse(BytesIO(schema.ResultXsltList.content.encode('utf-8')))
-                        listTransform = etree.XSLT(listXslt)
-                        newdom = listTransform(dom)
-                        custom_xslt = True
-                    else:
-                        newdom = transform(dom)
-                except Exception, e:
-                    #We use the default one
-                    newdom = transform(dom)
+            print 'after for section'
+            if instanceResult["_id"] in temp1:
+                print '_id====',instanceResult["_id"]
+                if not onlySuggestions:
                     custom_xslt = False
-                modification = request.user.is_staff or (str(instanceResult['iduser']) ==  str(request.user.id))
-                context = RequestContext(request, {'id': str(instanceResult['_id']),
-                                                   'xml': str(newdom),
-                                                   'title': instanceResult['title'],
-                                                   'custom_xslt': custom_xslt,
-                                                   'template_name': schema.title,
-                                                   'modification': modification})
+                    xml_content = instanceResult['xml_file']
+                    results.append({'title': instanceResult['title'],
+                                    'content': xml_content,
+                                    'id': str(instanceResult['_id'])})
+                    dom = etree.XML(xml_content.encode('utf-8'))
+                    #Check if a custom list result XSLT has to be used
+                    try:
+                        schema = Template.objects.get(pk=instanceResult['schema'])
+                        if schema.ResultXsltList:
+                            listXslt = etree.parse(BytesIO(schema.ResultXsltList.content.encode('utf-8')))
+                            listTransform = etree.XSLT(listXslt)
+                            newdom = listTransform(dom)
+                            custom_xslt = True
+                        else:
+                            newdom = transform(dom)
+                    except Exception, e:
+                        #We use the default one
+                        newdom = transform(dom)
+                        custom_xslt = False
+                    modification = request.user.is_staff or (str(instanceResult['iduser']) ==  str(request.user.id))
+                    context = RequestContext(request, {'id': str(instanceResult['_id']),
+                                                       'xml': str(newdom),
+                                                       'title': instanceResult['title'],
+                                                       'custom_xslt': custom_xslt,
+                                                       'template_name': schema.title,
+                                                       'modification': modification})
 
-                resultString += template.render(context)
-            else:
-                wordList = re.sub("[^\w]", " ",  keyword).split()
-                wordList = [x + "|" + x + "\w+" for x in wordList]
-                wordList = '|'.join(wordList)
-                xml_content = instanceResult['xml_file']
-                listWholeKeywords = re.findall("\\b(" + wordList + ")\\b", xml_content.encode('utf-8'), flags=re.IGNORECASE)
-                labels = list(set(listWholeKeywords))
+                    resultString += template.render(context)
+                else:
+                    wordList = re.sub("[^\w]", " ",  keyword).split()
+                    wordList = [x + "|" + x + "\w+" for x in wordList]
+                    wordList = '|'.join(wordList)
+                    xml_content = instanceResult['xml_file']
+                    listWholeKeywords = re.findall("\\b(" + wordList + ")\\b", xml_content.encode('utf-8'), flags=re.IGNORECASE)
+                    labels = list(set(listWholeKeywords))
 
-                for label in labels:
-                    label = label.lower()
-                    result_json = {}
-                    result_json['label'] = label
-                    result_json['value'] = label
-                    if not result_json in resultsByKeyword:
-                        resultsByKeyword.append(result_json)
+                    for label in labels:
+                        label = label.lower()
+                        result_json = {}
+                        result_json['label'] = label
+                        result_json['value'] = label
+                        if not result_json in resultsByKeyword:
+                            resultsByKeyword.append(result_json)
 
         result_json = {}
         result_json['resultString'] = resultString
@@ -529,7 +526,36 @@ def get_results_by_instance_keyword(request):
 
     return HttpResponse(json.dumps({'resultsByKeyword' : resultsByKeyword, 'resultString' : resultString, 'count' : len(instanceResults)}), content_type='application/javascript')
 
+def get_result_list(instanceResults,request):
+    # when there is no dataprofile ,query report error
+    print 'get_result_list start'
+    print len(instanceResults)
+    # if len(instanceResults) ==0 ,stop at here
+    temp1 = []
+    for temp_result in instanceResults:  # group filter
+        print 'start in first for section '+str(temp_result["_id"])
 
+        data = dataProfile.objects.get(xmlData=temp_result["_id"])
+        print 'data'
+        dgroup = cPickle.loads(str(data.groups))
+        print 'dgroup'
+        ugroup = cPickle.loads(str(UserProfile.objects.get(user=request.user).groups))
+        print 'ugroup'
+        tgroup = [i for i in dgroup if i in ugroup]
+        print 'tgroup'
+        if len(tgroup) > 0:
+            print len(tgroup)
+            temp1.append(temp_result["_id"])
+
+    temp2 = []
+    for temp_result in instanceResults:  # owner filter
+        print 'start in second for section'
+        if str(request.user.id) == str(temp_result["iduser"]):
+            temp2.append(temp_result["_id"])
+
+    print 'len(temp2)='
+    print len(temp2)
+    return list(set(temp1 + temp2))
 ################################################################################
 # 
 # Function Name: get_results_by_instance(request)

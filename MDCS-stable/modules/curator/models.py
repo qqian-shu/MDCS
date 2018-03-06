@@ -28,19 +28,11 @@ class BlobHosterModule(PopupModule):
         self.handle = None
 
         with open(os.path.join(TEMPLATES_PATH, 'BLOBHoster.html'), 'r') as blobhoster_file:        
-            blobhoster = blobhoster_file.read()
-            print 'curator/models/blobhoster: ',blobhoster
-
+            blobhoster = blobhoster_file.read()            
             template = Template(blobhoster)
-            print 'curator/models/type(template): ',type(template)
-
             context = Context({'form': BLOBHosterForm()})
-            print 'curator/models/context: ',context
-
             popup_content = template.render(context)
-            print 'curator/models/popup_content: ',popup_content
-
-        print 'SCRIPTS_PATH: ',SCRIPTS_PATH
+        
         PopupModule.__init__(self, popup_content=popup_content, button_label='Upload File',
                              scripts=[os.path.join(SCRIPTS_PATH, 'blobhoster.js')])
 
@@ -59,31 +51,16 @@ class BlobHosterModule(PopupModule):
                 return request.GET['data']
         return ''
 
-
-    #todo upload_file_to_mongodb
-
     def _post_display(self, request):
         form = BLOBHosterForm(request.POST, request.FILES)
         if not form.is_valid():
             raise ModuleError('Data not properly sent to server. Please "file" in POST data.')
 
         uploaded_file = request.FILES['file']
-        # print 'uploaded_file: ',uploaded_file
-        # print 'uploaded_file.type: ', type(uploaded_file)
-
         bh_factory = BLOBHosterFactory(BLOB_HOSTER, BLOB_HOSTER_URI, BLOB_HOSTER_USER, BLOB_HOSTER_PSWD, MDCS_URI)
-
-        # print 'BLOB_HOSTER: ',BLOB_HOSTER
-        # print 'BLOB_HOSTER_URI: ',BLOB_HOSTER_URI
-        # print 'BLOB_HOSTER_USER: ',BLOB_HOSTER_USER
-        # print 'BLOB_HOSTER_PSWD: ',BLOB_HOSTER_PSWD
-        # print 'MDCS_URI: ',MDCS_URI
-        #
-        # print 'bh_factory: ',bh_factory
-
         blob_hoster = bh_factory.createBLOBHoster()
         self.handle = blob_hoster.save(blob=uploaded_file, filename=uploaded_file.name, userid=str(request.user.id))
-        print 'self.handle: ',self.handle
+
         with open(os.path.join(TEMPLATES_PATH, 'BLOBHosterDisplay.html'), 'r') as display_file:
             display = display_file.read()
             template = Template(display)

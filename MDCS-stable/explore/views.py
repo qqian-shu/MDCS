@@ -18,7 +18,7 @@ from django.http import HttpResponse
 from django.http.response import HttpResponseBadRequest
 from rest_framework import status
 from django.template import RequestContext, loader, Context
-from django.shortcuts import redirect,render
+from django.shortcuts import redirect
 from django.conf import settings
 from mgi.models import Instance, SavedQuery, XMLdata, ExporterXslt
 import mgi.rights as RIGHTS
@@ -37,12 +37,7 @@ from exporter.builtin.models import XSLTExporter
 from admin_mdcs.models import permission_required
 import urllib
 import httplib
-#import api
 from api.views import tojson
-import re
-import lucene
-
-
 
 
 ################################################################################
@@ -90,19 +85,10 @@ def index(request):
 @permission_required(content_type=RIGHTS.explore_content_type, permission=RIGHTS.explore_access, login_url='/login')
 def index_keyword(request):
     template = loader.get_template('explore/explore_keyword.html')
-
-    print 'start'
-
     search_form = KeywordForm(request.user.id)
-
-    print 'end'
-    # print 'search_form: ',search_form
-    # print 'request.user.id: ',request.user.id
     context = RequestContext(request, {
         'search_Form':search_form,
     })
-    print context
-    # print 'context: ',template.render(context)
     return HttpResponse(template.render(context))
 
 
@@ -345,6 +331,22 @@ def explore_detail_remote(request):
     return HttpResponseBadRequest(page.render(context))
 
 
+################################################################################
+#
+# Function Name: explore_detail_result_keyword
+# Inputs:        request -
+# Outputs:       Detail of result keyword
+# Exceptions:    None
+# Description:   Page that allows to see detail result from a selected result
+#
+################################################################################
+# @permission_required(content_type=RIGHTS.explore_content_type, permission=RIGHTS.explore_access, login_url='/login')
+# def explore_detail_result_keyword(request) :
+#     template = loader.get_template('explore/explore_detail_results_keyword.html')
+#     context = explore_detail_result_process(request)
+#
+#     return HttpResponse(template.render(context))
+
 
 
 ################################################################################
@@ -379,23 +381,16 @@ def explore_detail_result_keyword_1(request) :
 def explore_detail_result_keyword(request) :
     # template = loader.get_template('explore/explore_detail_results_keyword.html')
     template = loader.get_template('explore/test_f.html')
-
-    # context = explore_detail_result_process(request)
-    # print 'context:  ',context
-    # print "type: ",type(context)
-
     # fhk_add_test1
+    #xml to json
     data = tojson(request)
-
-    '''check response data'''
+    #check response data
     result=data.content
-
     i='\"@xmlns:xsi\": \"http://www.w3.org/2001/XMLSchema-instance\", '
     result=result.replace(i,'')
     u='127.0.0.1'
     result=result.replace(u,'0.0.0.0')
     title = XMLdata.get(request.GET['id'])['title']
-
     context = RequestContext(request, {
         'XMLHolder': result,
         'title': title
@@ -415,11 +410,8 @@ def explore_detail_result_keyword(request) :
 @permission_required(content_type=RIGHTS.explore_content_type, permission=RIGHTS.explore_access, login_url='/login')
 def explore_detail_result_process(request):
     result_id = request.GET['id']
-    # print 'ResultId:  ',result_id
     xml_data = XMLdata.get(result_id)
-    # print 'XMLData: ',xml_data
     schema_id = xml_data['schema']
-    # print 'schema: ',schema_id
     if 'title' in request.GET:
         xml_data['title'] = request.GET['title']
 
@@ -430,13 +422,11 @@ def explore_detail_result_process(request):
 def _create_context_detail_view(request, xml_data, template):
     title = xml_data['title']
 
-
     if 'xml_file' in xml_data:
         xmlString = xml_data['xml_file']
     elif 'content' in xml_data:
         xmlString = xml_data['content']
     xmlString = xmlString.encode('utf-8')
-    # print 'XMLString: ',xmlString
 
     xsltPath = os.path.join(settings.SITE_ROOT, 'static', 'resources', 'xsl', 'xml2html.xsl')
     xslt = etree.parse(xsltPath)

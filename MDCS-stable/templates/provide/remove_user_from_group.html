@@ -1,0 +1,41 @@
+{% extends "mdcs/extra/one_column.html" %}
+{% load staticfiles %}
+
+{% comment %}
+<!--
+################################################################################
+#
+# File Name: remove_user_from_group.html
+# Application: templates
+# Description:
+#
+#
+# Author: ZzWU
+#         best_distance@126.com
+# Computer Engineering and Science School of Shanghai University
+#
+# Sponsor: National Institute of Standards and Technology
+#
+################################################################################
+-->
+{% endcomment %}
+
+<div> {{data}} </div>
+{% for item in data%}
+<p>{{ item }}</p>
+<span>
+<div class="tpl-title">My management groups</div>
+</span>
+{% if mygroups%}
+    {% include 'dashboard/my_groups_table.html' with groups=mygroups %}
+{%else%}
+    No groups found
+{%endif%}
+
+{% block title %}<h1>Remove User from the Group </h1>{% endblock %}
+{% block menu %}{% include 'mdcs/menus/main.html' with active_tab='tab1' %}{% endblock %}
+
+{% endfor %}
+{% block content %}
+    {% include 'commons/forms/remove_user.html' %}
+{% endblock %}

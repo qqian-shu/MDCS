@@ -368,15 +368,12 @@ def explore_detail_data_download(request):
         query = dict()
         if id is not None:
             query['_id'] = ObjectId(id)
-            print 'query[id]: ',query['_id']
         if len(query.keys()) == 0:
             content = {'message':'No parameters given.'}
             return Response(content, status=status.HTTP_400_BAD_REQUEST)
         else:
             jsonData = XMLdata.executeQueryFullResult(query)
-            # print 'jsonData_1: ',jsonData
             jsonData = jsonData.pop()
-            print 'jsonData: ', jsonData
             # We remove the extension
             filename = os.path.splitext(jsonData['title'])[0]
 
@@ -2469,31 +2466,6 @@ def export(request):
             return Response(content, status=status.HTTP_400_BAD_REQUEST)
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

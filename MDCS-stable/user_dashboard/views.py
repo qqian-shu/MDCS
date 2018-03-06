@@ -19,6 +19,7 @@ from django.conf import settings
 
 from mgi.common import SCHEMA_NAMESPACE
 from mgi.settings import BLOB_HOSTER, BLOB_HOSTER_URI, BLOB_HOSTER_USER, BLOB_HOSTER_PSWD, MDCS_URI
+from provide.models import UserProfile, dataGroup
 from utils.BLOBHoster.BLOBHosterFactory import BLOBHosterFactory
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseServerError
@@ -119,10 +120,14 @@ def dashboard_records(request):
     query['iduser'] = str(request.user.id)
     userXmlData = sorted(XMLdata.find(query), key=lambda data: data['lastmodificationdate'], reverse=True)
     #Add user_form for change owner
+    owner = UserProfile.objects.get(user=User.objects.get(id=request.user.id))
+
     user_form = UserForm(request.user)
     context = RequestContext(request, {'XMLdatas': userXmlData,
                                        # 'ispublished': ispublished,
-                                       'user_form': user_form
+                                       'user_form': user_form,
+                                       'myGroup': dataGroup.objects.filter(owner=owner.id),
+                                       'otherGroup': owner.get_group()
     })
     #If the user is an admin, we get records for other users
     if request.user.is_staff:

@@ -1,350 +1,139 @@
-[06/Nov/2017 06:35:18] ERROR [django.request:256] Internal Server Error: /explore/showastree
+[27/Dec/2017 04:41:17] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/views.py", line 349, in explore_detail_result_keyword_1
-    context = explore_detail_result_process(request)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/views.py", line 414, in explore_detail_result_process
-    result_id = request.GET['id']
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/utils/datastructures.py", line 322, in __getitem__
-    raise MultiValueDictKeyError(repr(key))
-MultiValueDictKeyError: "'id'"
-[06/Nov/2017 06:36:07] WARNING [django.request:170] Not Found: /explore/showastree
-[06/Nov/2017 06:36:55] WARNING [django.request:170] Not Found: /explore/showastree
-[06/Nov/2017 06:36:59] WARNING [django.request:170] Not Found: /explore/showastree
-[06/Nov/2017 06:37:21] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f134d97da10>.
-[06/Nov/2017 06:37:23] WARNING [django.request:170] Not Found: /explore/showastree
-[06/Nov/2017 06:42:02] WARNING [django.request:170] Not Found: /explore/showastree
-[06/Nov/2017 06:54:29] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f134d967170>.
-[06/Nov/2017 07:09:38] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f134d97d8f0>.
-[06/Nov/2017 07:21:34] WARNING [django.request:170] Not Found: /explore/showastree
-[06/Nov/2017 07:21:43] WARNING [django.request:170] Not Found: /explore/showastree
-[06/Nov/2017 22:59:56] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f134d97d590>.
-[06/Nov/2017 23:00:27] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f134d97d590>.
-[06/Nov/2017 23:00:50] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f134d9740b0>.
-[06/Nov/2017 23:01:39] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f134d974590>.
-[06/Nov/2017 23:02:20] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f134d967ad0>.
-[06/Nov/2017 23:02:23] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f134d967ef0>.
-[06/Nov/2017 23:04:14] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f134d97def0>.
-[06/Nov/2017 23:18:24] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f13fc8a3950>.
-[06/Nov/2017 23:18:26] ERROR [django.request:256] Internal Server Error: /explore/showastree
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 468, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 538, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[27/Dec/2017 04:53:28] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/views.py", line 349, in explore_detail_result_keyword_1
-    context = explore_detail_result_process(req)
-NameError: global name 'req' is not defined
-[06/Nov/2017 23:19:14] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f5926d53950>.
-[06/Nov/2017 23:19:17] ERROR [django.request:256] Internal Server Error: /explore/showastree
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 468, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 538, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[27/Dec/2017 04:53:29] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/views.py", line 351, in explore_detail_result_keyword_1
-    context = explore_detail_result_process(req)
-NameError: global name 'req' is not defined
-[06/Nov/2017 23:23:57] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc7411a5950>.
-[06/Nov/2017 23:24:56] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a6501950>.
-[06/Nov/2017 23:27:08] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a64d7830>.
-[06/Nov/2017 23:27:08] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a6501830>.
-[06/Nov/2017 23:30:55] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a64d7b30>.
-[06/Nov/2017 23:33:09] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a65018f0>.
-[06/Nov/2017 23:33:47] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a6501710>.
-[06/Nov/2017 23:34:32] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a6501cb0>.
-[06/Nov/2017 23:35:11] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a6501710>.
-[06/Nov/2017 23:50:06] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a64e9410>.
-[06/Nov/2017 23:50:37] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a64d7170>.
-[06/Nov/2017 23:51:12] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a64e9d70>.
-[06/Nov/2017 23:52:43] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a64e9a70>.
-[06/Nov/2017 23:53:59] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a64e9ad0>.
-[06/Nov/2017 23:54:32] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a64e9e90>.
-[06/Nov/2017 23:55:56] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a64e9fb0>.
-[06/Nov/2017 23:56:11] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a64d7170>.
-[06/Nov/2017 23:56:37] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a64d7e90>.
-[07/Nov/2017 00:01:15] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a6501530>.
-[07/Nov/2017 00:01:20] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a6501650>.
-[07/Nov/2017 00:03:13] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a6501530>.
-[07/Nov/2017 00:03:42] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a64e9410>.
-[07/Nov/2017 00:08:40] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a64e9b30>.
-[07/Nov/2017 00:14:30] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a6501f50>.
-[07/Nov/2017 00:18:46] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a52ead10>.
-[07/Nov/2017 00:20:13] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a4c8e890>.
-[07/Nov/2017 00:21:39] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a4c8ec50>.
-[07/Nov/2017 00:22:01] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a4c8ee90>.
-[07/Nov/2017 00:32:12] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a52ea350>.
-[07/Nov/2017 00:32:37] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a4c8eb90>.
-[07/Nov/2017 01:02:34] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a4c8e7d0>.
-[07/Nov/2017 01:28:44] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a52e8290>.
-[07/Nov/2017 02:40:18] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fc4a43fead0>.
-[09/Nov/2017 22:45:40] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f7fb1d6b950>.
-[09/Nov/2017 22:46:40] WARNING [django.request:170] Not Found: /favicon.ico
-[09/Nov/2017 22:46:40] WARNING [django.request:170] Not Found: /favicon.ico
-[09/Nov/2017 22:48:52] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f7fb2753f50>.
-[09/Nov/2017 23:41:50] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe8a6f948f0>.
-[09/Nov/2017 23:54:30] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe8a6f94ef0>.
-[10/Nov/2017 03:26:56] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe8a6f94fb0>.
-[10/Nov/2017 03:28:06] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe8a6f66050>.
-[10/Nov/2017 03:30:30] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe8a6f661d0>.
-[10/Nov/2017 03:38:05] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe8a6f66950>.
-[10/Nov/2017 03:38:37] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe8a6f66830>.
-[10/Nov/2017 03:47:08] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe8a6f66f50>.
-[10/Nov/2017 03:48:23] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe8a6f662f0>.
-[10/Nov/2017 03:51:07] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe8a6f667d0>.
-[10/Nov/2017 03:51:36] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe8a6f66f50>.
-[10/Nov/2017 04:03:20] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe8a6f669b0>.
-[10/Nov/2017 04:18:50] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe8a6f662f0>.
-[10/Nov/2017 04:20:21] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe8a6f66110>.
-[12/Nov/2017 07:03:02] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe8a6f66dd0>.
-[12/Nov/2017 07:09:25] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe8a6f66d10>.
-[12/Nov/2017 07:10:19] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe8a6f66050>.
-[12/Nov/2017 07:11:09] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe8a6f78ef0>.
-[12/Nov/2017 07:13:28] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe8a6f78e90>.
-[12/Nov/2017 07:16:22] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe8a6f66ad0>.
-[12/Nov/2017 07:17:07] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe8a6f78a10>.
-[12/Nov/2017 23:47:36] WARNING [django.request:170] Not Found: /favicon.ico
-[12/Nov/2017 23:48:06] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fd212421dd0>.
-[12/Nov/2017 23:48:10] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fd212421a70>.
-[14/Nov/2017 00:36:16] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fab54133e30>.
-[14/Nov/2017 00:37:45] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fab540fb890>.
-[14/Nov/2017 01:57:24] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fab540fb830>.
-[14/Nov/2017 01:57:29] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fab54133470>.
-[28/Nov/2017 02:04:11] WARNING [django.request:170] Not Found: /favicon.ico
-[28/Nov/2017 02:04:11] WARNING [django.request:170] Not Found: /favicon.ico
-[28/Nov/2017 02:05:22] ERROR [django.request:256] Internal Server Error: /explore/keyword
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 468, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 538, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[27/Dec/2017 04:54:01] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/views.py", line 93, in index_keyword
-    search_form = KeywordForm(request.user.id)
-  File "/home/mdcs/Documents/MDCS-stable/explore/forms.py", line 125, in __init__
-    print 'currentSchemas: ',currentSchemas.cleaned_data
-AttributeError: 'BaseList' object has no attribute 'cleaned_data'
-[29/Nov/2017 00:29:13] ERROR [django.request:256] Internal Server Error: /explore/keyword
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 468, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 538, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[27/Dec/2017 04:54:03] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/views.py", line 96, in index_keyword
-    search_form = KeywordForm(request.user.id)
-  File "/home/mdcs/Documents/MDCS-stable/explore/forms.py", line 129, in __init__
-    print 'schemas: ', Schemas
-NameError: global name 'Schemas' is not defined
-[01/Dec/2017 00:33:43] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fdf22fa4a70>.
-[01/Dec/2017 00:34:17] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fdf22fc34d0>.
-[01/Dec/2017 00:34:30] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fdf22fd3950>.
-[01/Dec/2017 00:35:31] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fdf22fa4cb0>.
-[01/Dec/2017 10:10:18] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 468, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 538, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[27/Dec/2017 05:14:13] WARNING [django.request:170] Not Found: /newpermission/deleteGroup
+[27/Dec/2017 05:14:13] WARNING [django.request:170] Not Found: /newpermission/addUsertoGroup
+[27/Dec/2017 05:14:13] WARNING [django.request:170] Not Found: /newpermission/creategroup
+[27/Dec/2017 05:16:42] WARNING [django.request:98] Forbidden (CSRF token missing or incorrect.): /curate/set_current_template
+[27/Dec/2017 22:20:00] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
-    instanceResults = XMLdata.testmongodb(keyword, templatesID)
-  File "/home/mdcs/Documents/MDCS-stable/mgi/models.py", line 746, in testmongodb
-    doc.write(results)
-TypeError: expected a string or other character buffer object
-[01/Dec/2017 10:10:18] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 468, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 538, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[27/Dec/2017 22:20:14] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
-    instanceResults = XMLdata.testmongodb(keyword, templatesID)
-  File "/home/mdcs/Documents/MDCS-stable/mgi/models.py", line 746, in testmongodb
-    doc.write(results)
-TypeError: expected a string or other character buffer object
-[01/Dec/2017 10:10:21] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 468, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 538, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[28/Dec/2017 00:35:47] WARNING [django.request:170] Not Found: /favicon.ico
+[28/Dec/2017 00:36:53] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
-    instanceResults = XMLdata.testmongodb(keyword, templatesID)
-  File "/home/mdcs/Documents/MDCS-stable/mgi/models.py", line 746, in testmongodb
-    doc.write(results)
-TypeError: expected a string or other character buffer object
-[01/Dec/2017 10:18:09] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 468, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 538, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[28/Dec/2017 00:37:58] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
 Traceback (most recent call last):
   File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
-    instanceResults = XMLdata.testmongodb(keyword, templatesID)
-  File "/home/mdcs/Documents/MDCS-stable/mgi/models.py", line 745, in testmongodb
-    results_str = ''.join(results)
-TypeError: sequence item 0: expected string, OrderedDict found
-[01/Dec/2017 10:18:56] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
-Traceback (most recent call last):
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
-    instanceResults = XMLdata.testmongodb(keyword, templatesID)
-  File "/home/mdcs/Documents/MDCS-stable/mgi/models.py", line 748, in testmongodb
-    results_str = ''.join(results)
-TypeError: sequence item 0: expected string, OrderedDict found
-[01/Dec/2017 10:19:03] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
-Traceback (most recent call last):
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
-    instanceResults = XMLdata.testmongodb(keyword, templatesID)
-  File "/home/mdcs/Documents/MDCS-stable/mgi/models.py", line 748, in testmongodb
-    results_str = ''.join(results)
-TypeError: sequence item 0: expected string, OrderedDict found
-[01/Dec/2017 10:19:05] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
-Traceback (most recent call last):
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
-    instanceResults = XMLdata.testmongodb(keyword, templatesID)
-  File "/home/mdcs/Documents/MDCS-stable/mgi/models.py", line 748, in testmongodb
-    results_str = ''.join(results)
-TypeError: sequence item 0: expected string, OrderedDict found
-[01/Dec/2017 10:21:38] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
-Traceback (most recent call last):
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
-    instanceResults = XMLdata.testmongodb(keyword, templatesID)
-  File "/home/mdcs/Documents/MDCS-stable/mgi/models.py", line 748, in testmongodb
-    results_str = ','.join(results)
-TypeError: sequence item 0: expected string, OrderedDict found
-[01/Dec/2017 10:21:40] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
-Traceback (most recent call last):
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
-    instanceResults = XMLdata.testmongodb(keyword, templatesID)
-  File "/home/mdcs/Documents/MDCS-stable/mgi/models.py", line 748, in testmongodb
-    results_str = ','.join(results)
-TypeError: sequence item 0: expected string, OrderedDict found
-[01/Dec/2017 11:05:58] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
-Traceback (most recent call last):
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
-    instanceResults = XMLdata.testmongodb()
-  File "/home/mdcs/Documents/MDCS-stable/mgi/models.py", line 759, in testmongodb
-    os.mknod(cnt+".txt")
-TypeError: unsupported operand type(s) for +: 'int' and 'str'
-[01/Dec/2017 11:07:23] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
-Traceback (most recent call last):
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
-    instanceResults = XMLdata.testmongodb()
-  File "/home/mdcs/Documents/MDCS-stable/mgi/models.py", line 759, in testmongodb
-    os.mknod(str(cnt)+".txt")
-OSError: [Errno 17] File exists
-[01/Dec/2017 11:07:25] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
-Traceback (most recent call last):
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
-    instanceResults = XMLdata.testmongodb()
-  File "/home/mdcs/Documents/MDCS-stable/mgi/models.py", line 759, in testmongodb
-    os.mknod(str(cnt)+".txt")
-OSError: [Errno 17] File exists
-[01/Dec/2017 11:08:21] ERROR [django.request:256] Internal Server Error: /explore/get_results_by_instance_keyword
-Traceback (most recent call last):
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 464, in get_results_by_instance_keyword
-    instanceResults = XMLdata.testmongodb()
-  File "/home/mdcs/Documents/MDCS-stable/mgi/models.py", line 759, in testmongodb
-    os.mknod(str(cnt)+".txt")
-OSError: [Errno 17] File exists
-[03/Dec/2017 23:53:34] WARNING [django.request:170] Not Found: /favicon.ico
-[03/Dec/2017 23:53:35] WARNING [django.request:170] Not Found: /favicon.ico
-[04/Dec/2017 00:11:47] ERROR [django.request:256] Internal Server Error: /compose/load_xml
-Traceback (most recent call last):
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/compose/ajax.py", line 179, in load_xml
-    transform = etree.XSLT(xslt)
-  File "src/lxml/xslt.pxi", line 409, in lxml.etree.XSLT.__init__ (src/lxml/lxml.etree.c:177777)
-XSLTParseError: xsl:value-of : could not compile select expression 'name(.youdia)'
-[04/Dec/2017 00:11:51] ERROR [django.request:256] Internal Server Error: /compose/change_root_type_name
-Traceback (most recent call last):
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/compose/ajax.py", line 618, in change_root_type_name
-    defaultPrefix = request.session['defaultPrefixCompose']
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/contrib/sessions/backends/base.py", line 48, in __getitem__
-    return self._session[key]
-KeyError: 'defaultPrefixCompose'
-[04/Dec/2017 00:34:35] WARNING [django.request:98] Forbidden (CSRF token missing or incorrect.): /login
-[04/Dec/2017 03:15:58] WARNING [django.request:170] Not Found: /curate/Fig.2.jpg
-[04/Dec/2017 03:16:05] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fcf30853fb0>.
-[08/Dec/2017 01:56:34] ERROR [django.request:256] Internal Server Error: /modules/curator/blob-hoster
-Traceback (most recent call last):
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/modules/curator/views.py", line 9, in blob_hoster
-    return BlobHosterModule().render(request)
-  File "/home/mdcs/Documents/MDCS-stable/modules/models.py", line 43, in render
-    return self._post(request)
-  File "/home/mdcs/Documents/MDCS-stable/modules/models.py", line 115, in _post
-    raise ModuleError('Something went wrong during module update: ' + e.message)
-ModuleError: 'Something went wrong during module update: Data not properly sent to server. Please "file" in POST data.'
-[10/Dec/2017 05:52:27] WARNING [django.request:170] Not Found: /favicon.ico
-[10/Dec/2017 05:52:27] WARNING [django.request:170] Not Found: /favicon.ico
-[10/Dec/2017 05:52:27] WARNING [django.request:170] Not Found: /favicon.ico
-[25/Dec/2017 01:20:22] WARNING [django.request:170] Not Found: /favicon.ico
-[25/Dec/2017 01:20:23] WARNING [django.request:170] Not Found: /favicon.ico
-[25/Dec/2017 01:20:25] WARNING [django.request:170] Not Found: /favicon.ico
-[25/Dec/2017 01:20:29] WARNING [django.request:170] Not Found: /favicon.ico
-[25/Dec/2017 01:20:59] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f6e4ee0a410>.
-[25/Dec/2017 01:21:02] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f6e4ee6c1d0>.
-[25/Dec/2017 01:54:11] WARNING [django.request:98] Forbidden (CSRF token missing or incorrect.): /login
-[25/Dec/2017 02:10:14] ERROR [django.request:256] Internal Server Error: /curate/enter-data
-Traceback (most recent call last):
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/curate/views.py", line 209, in curate_enter_data
-    print 'views.enter-data.context: '+context
-TypeError: cannot concatenate 'str' and 'RequestContext' objects
-[25/Dec/2017 02:10:37] ERROR [django.request:256] Internal Server Error: /curate/enter-data
-Traceback (most recent call last):
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/curate/views.py", line 209, in curate_enter_data
-    print 'views.enter-data.context: '+context
-TypeError: cannot concatenate 'str' and 'RequestContext' objects
-[25/Dec/2017 02:10:52] ERROR [django.request:256] Internal Server Error: /curate/enter-data
-Traceback (most recent call last):
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 132, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/admin_mdcs/models.py", line 118, in wrapper
-    return view_func(request, *args, **kwargs)
-  File "/home/mdcs/Documents/MDCS-stable/curate/views.py", line 209, in curate_enter_data
-    print 'views.enter-data.context: '+context
-TypeError: cannot concatenate 'str' and 'RequestContext' objects
-[25/Dec/2017 02:13:47] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7ff9a5dbb230>.
-[25/Dec/2017 20:44:01] WARNING [django.request:170] Not Found: /favicon.ico
-[25/Dec/2017 20:44:01] WARNING [django.request:170] Not Found: /favicon.ico
-[27/Dec/2017 04:49:33] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe8235d6b90>.
-[27/Dec/2017 04:52:40] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe823630290>.
-[27/Dec/2017 04:55:25] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fe823630050>.
-[27/Dec/2017 04:57:47] ERROR [django.request:256] Internal Server Error: /newpermission/groups
-Traceback (most recent call last):
-  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/core/handlers/base.py", line 151, in get_response
-    % (callback.__module__, view_name))
-ValueError: The view provide.views.group_detail didn't return an HttpResponse object. It returned None instead.
-[27/Dec/2017 04:57:57] WARNING [django.request:170] Not Found: /newpermission/managegroup
-[27/Dec/2017 04:58:03] WARNING [django.request:170] Not Found: /newpermission/manageGroup
-[27/Dec/2017 22:18:39] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fb2804f2170>.
-[27/Dec/2017 22:18:53] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fb2804f2d10>.
-[27/Dec/2017 22:19:12] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fb2804f2710>.
-[01/Mar/2018 21:18:57] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fb2805824d0>.
-[01/Mar/2018 21:19:47] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7fb280582230>.
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 468, in get_results_by_instance_keyword
+    temp1=get_result_list(instanceResults,request)
+  File "/home/mdcs/Documents/MDCS-stable/explore/ajax.py", line 538, in get_result_list
+    data = dataProfile.objects.get(xmlData=temp_result["_id"])
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/manager.py", line 127, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/mdcs/anaconda2/lib/python2.7/site-packages/django/db/models/query.py", line 334, in get
+    self.model._meta.object_name
+DoesNotExist: dataProfile matching query does not exist.
+[28/Dec/2017 01:26:59] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f2d500e4050>.
+[28/Dec/2017 01:29:37] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f2d500e4ad0>.
+[28/Dec/2017 01:32:18] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f2d500e46b0>.
+[28/Dec/2017 01:33:07] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f85b43fa830>.
+[28/Dec/2017 01:47:51] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f85b442a110>.
+[28/Dec/2017 01:48:42] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f85b442a350>.
+[28/Dec/2017 01:49:02] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f85b442ae30>.
+[28/Dec/2017 01:50:32] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f85b442a590>.
+[28/Dec/2017 01:55:33] WARNING [django.request:170] Not Found: /ADMIN
+[28/Dec/2017 02:01:22] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f85b421a6b0>.
+[28/Dec/2017 02:01:24] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f85b435a7d0>.
+[06/Mar/2018 01:05:00] WARNING [django.request:170] Not Found: /favicon.ico
+[06/Mar/2018 01:05:00] WARNING [django.request:170] Not Found: /favicon.ico
+[06/Mar/2018 01:15:03] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f01149c7590>.
+[06/Mar/2018 01:33:24] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f1b14fbf830>.
+[06/Mar/2018 01:36:25] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f1b14f43590>.
+[06/Mar/2018 02:12:16] DEBUG [oauthlib.oauth2.rfc6749.endpoints.resource:74] Dispatching token_type Bearer request to <oauthlib.oauth2.rfc6749.tokens.BearerToken object at 0x7f1b14e95770>.

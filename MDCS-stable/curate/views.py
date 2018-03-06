@@ -15,6 +15,8 @@
 ################################################################################
 
 from cStringIO import StringIO
+
+import cPickle
 from django.http import HttpResponse
 from django.template import RequestContext, loader
 from django.shortcuts import redirect
@@ -33,6 +35,8 @@ import mgi.rights as RIGHTS
 from mgi.exceptions import MDCSError
 from io import BytesIO
 
+from django.contrib.auth.models import User
+from provide.models import UserProfile, dataGroup, dataProfile
 
 ################################################################################
 #
@@ -54,8 +58,6 @@ def index(request):
     for tpl_version in TemplateVersion.objects():
         currentTemplateVersions.append(tpl_version.current)
 
-    print 'currentTemplateVersions:    ' ,currentTemplateVersions
-
     currentTemplates = dict()
     for tpl_version in currentTemplateVersions:
         tpl = Template.objects.get(pk=tpl_version)
@@ -63,14 +65,10 @@ def index(request):
             templateVersions = TemplateVersion.objects.get(pk=tpl.templateVersion)
             currentTemplates[tpl] = templateVersions.isDeleted
 
-    print 'currentTemplates:    ' , currentTemplates
-
     context = RequestContext(request, {
        'templates':currentTemplates,
        'userTemplates': Template.objects(user=str(request.user.id)),
     })
-
-    print context
 
     return HttpResponse(template.render(context))
 
@@ -206,7 +204,7 @@ def curate_enter_data(request):
             pass
         
         template = loader.get_template('curate/curate_enter_data.html')
-        print 'views.enter-data.context: ',context
+        
         return HttpResponse(template.render(context))
     except MDCSError, e:
         template = loader.get_template('curate/errors.html')
@@ -232,6 +230,8 @@ def curate_view_data(request):
     # get form data from the database
     form_data_id = request.session['curateFormData']
     form_data = FormData.objects.get(pk=ObjectId(form_data_id))
+
+    owner = UserProfile.objects.get(user=User.objects.get(id=request.user.id))
     if not form_data.name.lower().endswith('.xml'):
         form_data.name += ".xml"
     form_name = form_data.name
@@ -245,6 +245,8 @@ def curate_view_data(request):
     context = RequestContext(request, {
         'form_save': SaveDataForm({"title": form_name}),
         'edit': edit,
+        'myGroup': dataGroup.objects.filter(owner=owner.id),
+        'otherGroup': owner.get_group()
     })
     if 'currentTemplateID' not in request.session:
         return redirect('/curate/select-template')
@@ -486,6 +488,11 @@ def save_xml_data_to_db(request):
             xml_data_id = xml_data.save()
             XMLdata.update_publish(xml_data_id)
 
+        print 'SchemaID====',template_id
+        print 'xml_data_id====', xml_data_id
+        request.session['xml_data_id'] = str(xml_data_id)
+        print 'request.session-xml_data_id',request.session['xml_data_id']
+
         if form_data.schema_element_root is not None:
             delete_branch_from_db(form_data.schema_element_root.pk)
 
@@ -495,6 +502,53 @@ def save_xml_data_to_db(request):
     except Exception, e:
         message = e.message.replace('"', '\'')
         return HttpResponseBadRequest(message)
+
+
+################################################################################
+#
+# Function Name: select_data_groups(request)
+# Inputs:        request -
+# Outputs:
+# Exceptions:    None
+# Description:   Save the current XML document's groups in SQlite.
+# Author: WU Zhenzhen
+# Email: best_diatance@126.com
+# Date: 2017-07-31
+#
+#
+################################################################################
+@permission_required(content_type=RIGHTS.curate_content_type, permission=RIGHTS.curate_access, login_url='/login')
+def save_data_groups(request):
+        if request.POST['XMLdata_id'] == 'empty':
+            xml_data = request.session['xml_data_id']
+            print 'request.session[xml_data_id]', xml_data
+
+        else:
+            xml_data = request.POST['XMLdata_id']
+            print 'not none ,request.POST[XMLdata_id]=========', xml_data
+            # In this condition ,dataprofile need to be delete
+            try:
+                result_delete = dataProfile.objects.get(xmlData=xml_data)
+                print result_delete, '====res_del'
+                print result_delete.xmlData
+                result_delete.delete()
+            except Exception, e:
+                print 'xmldata in no group'
+
+
+        group_id = request.POST.getlist('groupid')
+        print 'groupid======', group_id
+
+        temp = []
+        for item in group_id:
+            temp.append(int(item))
+        groups_id = cPickle.dumps(temp)
+        print 'sava start-----------'
+        result = dataProfile(xmlData=xml_data, groups=groups_id)
+        print 'save end -----------'
+        id = result.save()
+
+        return HttpResponse('ok')
 
 
 ################################################################################
@@ -515,19 +569,12 @@ def curate_edit_form(request):
                     form_data = FormData.objects.get(pk=ObjectId(form_data_id))
                 except:
                     raise MDCSError("The form you are looking for doesn't exist.")
-
-                print 'views/request.session:  ',request.session
-
                 request.session['curate_edit'] = True
                 # parameters that will be used during curation
                 request.session['curateFormData'] = str(form_data.id)
-                print 'views/request.session[\'curateFormData\']:  ', request.session['curateFormData']
                 request.session['currentTemplateID'] = form_data.template
-                print 'views/request.session[\'currentTemplateID\']:  ', request.session['currentTemplateID']
                 templateObject = Template.objects.get(pk=form_data.template)
-                print 'views/templateObject:   ',templateObject
                 xmlDocData = templateObject.content
-                print 'views/xmlDocData:   ',xmlDocData
                 XMLtree = etree.parse(BytesIO(xmlDocData.encode('utf-8')))
                 request.session['xmlDocTree'] = etree.tostring(XMLtree)
 
@@ -543,8 +590,6 @@ def curate_edit_form(request):
                     else:
                         xml_doc_data = None
 
-                    print 'views/xml_doc_data: ',xml_doc_data
-
                     root_element_id = generate_form(request, xsd_doc_data, xml_doc_data, config=load_config())
                     root_element = SchemaElement.objects.get(pk=root_element_id)
 
@@ -552,8 +597,6 @@ def curate_edit_form(request):
                     form_data.reload()
 
                 request.session['form_id'] = str(form_data.schema_element_root.id)
-
-                print 'views/request.session[\'form_id\']: ',request.session['form_id']
 
                 context = RequestContext(request, {
                 })

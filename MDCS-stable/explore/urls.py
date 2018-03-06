@@ -25,11 +25,10 @@ urlpatterns = patterns('',
     url(r'^customize-template$', 'explore.views.explore_customize_template', name='expore-customize-template'),
     url(r'^perform-search$', 'explore.views.explore_perform_search', name='explore-perform-search'),
 
-    url(r'^detail_result_keyword_1$', 'explore.views.explore_detail_result_keyword_1', name='explore-detail-result-keyword_1'),
+    url(r'^detail_result_keyword_1$', 'explore.views.explore_detail_result_keyword_1',name='explore-detail-result-keyword_1'),
+    url(r'^detail_result_keyword$', 'explore.views.explore_detail_result_keyword',name='explore-detail-result-keyword'),
 
-    url(r'^detail_result_keyword$', 'explore.views.explore_detail_result_keyword', name='explore-detail-result-keyword'),
-
-
+    # url(r'^detail_result_keyword$', 'explore.views.explore_detail_result_keyword', name='explore-detail-result-keyword'),
     url(r'^detail_result$', 'explore.views.explore_detail_result', name='explore-detail-result'),
     url(r'^detail_view_remote$', 'explore.views.explore_detail_remote', name='explore-detail-remote'),
     url(r'^results$', 'explore.views.explore_results', name='explore-results'),

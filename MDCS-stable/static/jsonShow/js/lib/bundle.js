@@ -171,13 +171,13 @@ var JsonContent = function () {
                         $dom.attr('id', key);
                         $dom.find('div.key_text').html(key);
 
-                        if(key === 'url'){
-                            var $a = $('<a></a>');
-                            $a.html(json[key]);
-                            $a.attr('href',json[key]);
-                            $dom.find('div.value').append($a);
-                            $container.append($dom);
-                            break;
+                        if(key ==='url'){
+                          var $a = $('<a></a>');
+                          $a.html(json[key]);
+                          $a.attr('href',json[key]);
+                          $dom.find('div.value').append($a);
+                          $container.append($dom);
+                          break;
                         }
 
                         var $span = $('<span></span>');
@@ -209,7 +209,6 @@ var JsonContent = function () {
                     });
                 }
             }
-
 
             if (tableData.length === 0) {
                 return null;
@@ -246,7 +245,7 @@ var JsonContent = function () {
             var paginatorID = this.getRandomID();
             var pageSize = 6;
 
-            var tablePaginatorHtml = '<div>\n        <div id=' + ('table' + tableID) + '></div>\n        <div>\n          <ul id=' + ('paginator' + paginatorID) + ' tableID=' + ('table' + tableID) + ' class="pagination"></ul>\n          <div class="resetPageSize">\n            <span>pageSize:</span>\n            <input type="text" value=' + pageSize + ' />\n            <button class="resetPageSizeButton">Reset</button>\n          </div>\n        </div>\n      </div>';
+            var tablePaginatorHtml = '<div>\n        <div id=' + ('table' + tableID) + '></div>\n        <div>\n          <ul id=' + ('paginator' + paginatorID) + ' tableID=' + ('table' + tableID) + ' class="pagination"></ul>\n          <div class="resetPageSize">\n            <span>pageSize:</span>\n            <input type="text" value=' + pageSize + ' />\n            <button class="resetPageSizeButton">\u91CD\u7F6E</button>\n          </div>\n        </div>\n      </div>';
 
             var tablePaginator = $(tablePaginatorHtml);
             // 插入表格 分页器
@@ -363,6 +362,7 @@ var JsonContent = function () {
 
                     return getTR(currentValue);
                 }).join('') + '\n\n    </table>';
+
             return $(tableTemplate);
         }
     }, {
@@ -429,21 +429,18 @@ var JsonNavigation = function () {
         value: function render(json, $container) {
             var html = '' + Object.keys(json).map(function (currentKey, index, keyArray) {
                     var key = currentKey;
-                    // console.log(key);
                     if (key === 'array') {
                         key = Object.keys(json['array'])[0];
                     }
                     if (key === 'images-array') {
                         key = Object.keys(json['images'])[0];
                     }
-                    // console.log(index);
                     if (index === 0) {
                         return '<a class="navigation-item navigation-item-selected" href="#' + key + '">' + key + '</a>';
                     } else {
                         return '<a class="navigation-item" href="#' + key + '">' + key + '</a>';
                     }
                 }).join('');
-            // console.log('html'+html);
             $container.append(html);
         }
     }, {

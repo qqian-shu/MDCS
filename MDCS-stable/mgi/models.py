@@ -29,16 +29,13 @@ from io import BytesIO
 
 from mgi import common
 from mgi.exceptions import MDCSError, XMLError, XSDError
+from provide.models import dataProfile
 from utils.XMLValidation.xml_schema import validate_xml_schema
 from utils.XSDhash import XSDhash
 import os
 from django.utils.importlib import import_module
 import json
 from curate.models import SchemaElement
-
-import string
-import os
-
 
 settings_file = os.environ.get("DJANGO_SETTINGS_MODULE")
 settings = import_module(settings_file)
@@ -619,6 +616,8 @@ class XMLdata(object):
         now = datetime.datetime.now()
         xmldata.update({'_id': ObjectId(postID)}, {"$set": {'status': Status.DELETED, 'oai_datestamp': now}},
                        upsert=False)
+        profile = dataProfile.objects.get(xmlData=ObjectId(postID))
+        profile.delete()
 
     @staticmethod
     def update_content(postID, content=None, title=None):
@@ -693,29 +692,21 @@ class XMLdata(object):
         db = client[MGI_DB]
         # get the xmldata collection
         xmldata = db['xmldata']
-        # print 'xmldata: ',xmldata
         wordList = re.sub("[^\w]", " ",  text).split()
-        # print 'wordlist1: ',wordList
         wordList = ['"{0}"'.format(x) for x in wordList]
-        # print 'wordlist2: ', wordList
         wordList = ' '.join(wordList)
-        # print 'wordlist3: ', wordList
     
         if len(wordList) > 0:
             full_text_query = {'$text': {'$search': wordList}, 'schema': {'$in': templatesID}, }
         else:
             full_text_query = {'schema': {'$in': templatesID}}
-
-        # print 'full_text_query: ',full_text_query
-
-        # print refinements.keys()
-
+        
         if len(refinements.keys()) > 0:
             full_text_query.update(refinements)
         full_text_query.update({'ispublished': True})
 
         cursor = xmldata.find(full_text_query).sort('publicationdate', DESCENDING)
-        print 'cursor: ', cursor
+        
         results = []
         for result in cursor:
             # Check the deleted records
@@ -723,55 +714,7 @@ class XMLdata(object):
                 results.append(result)
             elif result.get('status') != Status.DELETED:
                 results.append(result)
-        print 'results: ',results
         return results
-
-    @staticmethod
-    def testmongodb(includeDeleted=False):
-        # create a connection
-        client = MongoClient(MONGODB_URI, document_class=OrderedDict)
-        # connect to the db 'mgi'
-        db = client[MGI_DB]
-        # get the xmldata collection
-        xmldata = db['xmldata']
-
-
-        cursor = xmldata.find().sort('publicationdate', DESCENDING)
-        print 'cursor: ',cursor
-        results = []
-        cnt=0
-        for result in cursor:
-            os.chdir('/home/mdcs/Documents/MDCS-stable/test')
-            # Check the deleted records
-            if includeDeleted:
-                results.append(result)
-                print '#'
-                result_str = str(result)
-                os.mknod(str(cnt)+".txt")
-                doc = open(str(cnt)+'.txt', 'w+')
-                doc.write(result_str)
-                doc.close()
-                cnt=cnt+1
-            elif result.get('status') != Status.DELETED:
-                results.append(result)
-                print '*'
-                result_str = str(result)
-                os.mknod(str(cnt)+".txt")
-                doc = open(str(cnt)+'.txt', 'w+')
-                doc.write(result_str)
-                doc.close()
-                cnt=cnt+1
-        print 'results: ', results
-        results_str = str(results)
-        print 'type_results: ', type(results_str)
-        doc = open('/home/mdcs/Documents/MDCS-stable/xml_info.txt','w+')
-        doc.write(results_str)
-        doc.close()
-
-        return results
-
-
-
 
 
 class OaiSettings(Document):

@@ -473,6 +473,8 @@ loadCurrentTemplateView = function()
     $('.btn.download-xml').on('click', downloadXML);
     $('.btn.save-to-repo').on('click',  function(event) {
         saveToRepositoryProcess(XMLDataSaved);
+        // saveToRepository();
+        // XMLDataSaved2() ;
     });
 
     console.log('END [loadCurrentTemplateView]');
@@ -583,7 +585,7 @@ saveToRepositoryProcess = function(successFunction)
    $.ajax({
         url : "/curate/save_xml_data_to_db",
         type: 'POST',
-        data: formData,
+        data: formData ,
         cache: false,
         contentType: false,
         processData: false,
@@ -656,7 +658,14 @@ enterKeyPressSaveRepositorySubscription = function ()
 
 /**
  * Saved XML data to DB message.
+ *
+ * when sava data to db ,select groups
+ *
+ * modified by WU Zhenzhen
+ * 2017-07-31
+ *
  */
+
 XMLDataSaved = function()
 {
     console.log('BEGIN [savedXMLDataToDB]');
@@ -669,7 +678,23 @@ XMLDataSaved = function()
             },
             buttons: {
                 Ok: function() {
-                    $( this ).dialog( "close" );
+                   var formData = new FormData($( "#form_group" )[0]);
+                   $.ajax({
+                        url : "/curate/save_data_groups",
+                        type: 'POST',
+                        data: formData ,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        async:false,
+                        success : function(data) {
+                            $( "#dialog-saved-message" ).dialog( "close" );
+                        },
+                        error:function(data){
+                            $("#saveErrorMessage").html(data.responseText);
+                        },
+                    });
+
                 }
             }
         });

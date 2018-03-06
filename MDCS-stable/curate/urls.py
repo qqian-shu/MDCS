@@ -33,6 +33,7 @@ urlpatterns = patterns(
     url(r'^element_value', ajax.get_element_value),
     url(r'^save_element', 'curate.ajax.save_element'),
     url(r'^save_form', 'curate.ajax.save_form'),
+    url(r'^save_data_groups', 'curate.views.save_data_groups'), # By WU Zhenzhen
     url(r'^view_data', 'curate.ajax.view_data'),
     url(r'^validate_xml_data', 'curate.ajax.validate_xml_data'),
     url(r'^verify_template_is_selected', 'curate.ajax.verify_template_is_selected'),

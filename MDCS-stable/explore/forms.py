@@ -122,19 +122,16 @@ class KeywordForm(forms.Form):
 
         #We retrieve all common template + user template
         currentSchemas = TemplateVersion.objects(isDeleted=False).distinct(field="current")
-        print 'currentSchemas: ',currentSchemas[1]
         schemas = Template.objects(pk__in=currentSchemas, user=None).distinct(field="title")
 
         userSchemas = Template.objects(user=str(userId)).distinct(field="title")
-        print 'schemas: ', schemas
-        print 'userschemas: ', userSchemas
+
         for schema in schemas:
             #We add them
             self.SCHEMAS_OPTIONS.append((schema, schema))
 
         for schema in userSchemas:
             #We add them
-            print '*', schema
             self.SCHEMAS_USER_OPTIONS.append((schema, schema))
 
         super(KeywordForm, self).__init__()
@@ -144,9 +141,7 @@ class KeywordForm(forms.Form):
         self.fields['my_user_schemas'].choices = self.SCHEMAS_USER_OPTIONS
 
         self.my_schemas_nb = len(self.SCHEMAS_OPTIONS)
-        print '#',self.my_schemas_nb
         self.my_user_schemas_nb = len(self.SCHEMAS_USER_OPTIONS)
-        print '##',self.my_user_schemas_nb
 
         if self.my_schemas_nb + self.my_user_schemas_nb == 1:
             self.fields['my_schemas'].widget.attrs['disabled'] = True

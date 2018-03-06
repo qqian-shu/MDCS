@@ -66,7 +66,6 @@ def get_results_by_instance_keyword(request):
         protocol = "http"
     instance = Instance(name="Local", protocol=protocol, address=request.META['REMOTE_ADDR'], port=request.META['SERVER_PORT'], access_token="token", refresh_token="token")
     json_instances.append(instance.to_json())
-    # print "######################json_instances:    ", json_instances
     request.session['instancesExplore'] = json_instances
     sessionName = "resultsExploreOaiPMh" + instance['name']
 
@@ -80,7 +79,6 @@ def get_results_by_instance_keyword(request):
             mergedSchemas += t['oai-pmh']
         if 'onlySuggestions' in request.GET:
             onlySuggestions = json.loads(request.GET['onlySuggestions'])
-            # print "######################onlysuggestion:    ",onlySuggestions
         else:
             onlySuggestions = False
     except:
@@ -90,7 +88,6 @@ def get_results_by_instance_keyword(request):
         mergedSchemas = []
 
     instanceResults = OaiRecord.executeFullTextQuery(keyword, mergedSchemas)
-    # print "######################instanceResults    ",instanceResults
     if len(instanceResults) > 0:
         if not onlySuggestions:
             xsltPath = os.path.join(settings.SITE_ROOT, 'static/resources/xsl/xml2html.xsl')

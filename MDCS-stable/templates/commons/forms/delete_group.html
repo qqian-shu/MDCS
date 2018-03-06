@@ -1,0 +1,115 @@
+
+
+{% load i18n %}
+{% comment %}
+
+<!--
+################################################################################
+#
+# File Name: delete_group.html
+# Application: templates
+# Description:
+#
+# Author: ZzWU
+#         best_distance@126.com
+# Computer Engineering and Science School of Shanghai University
+#
+# Sponsor: National Institute of Standards and Technology
+#
+################################################################################
+-->
+{% endcomment %}
+
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+    <label class="label">Groups   I   created</label> <label class="label label-danger" for="'id_group_name_error">{{ errors }}</label>
+<div style="margin-left:20px;">
+    <form action="" method="post">
+        <div style="display:none">
+            <input type="hidden" value="{{ csrf_token }}" name="csrfmiddlewaretoken">
+             <input type="hidden" value="" name="userid">
+        </div>
+        <div>
+        <table>
+             <tr>
+                 <td width="150px"><label >Group Name</label></td>
+                 <td width="200px"><label >Description</label></td>
+                 <td width="200px"><label >Invite Code </label></td>
+                 <td> </td>
+            </tr>
+            <!--{% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}-->
+        </table>
+            </div>
+    </form>
+    {% for managegroup in myGroup %}
+     <form action="" method="post">
+        <div style="display:none">
+            <input type="hidden" value="{{ csrf_token }}" name="csrfmiddlewaretoken">
+             <input type="hidden" value="" name="userid">
+        </div>
+        <div>
+        <table>
+             <tr>
+                <td width="150px" >{{managegroup.groupname}}</td>
+                  <td width="200px">{{managegroup.description}}</td>
+                  <td width="200px">
+                    {{managegroup.invite_code}}
+                  </td>
+                <td>
+                    <input type="hidden"  name="groupid" value="{{managegroup.id}}">
+                    <input type="hidden"  name="groupname" value="{{managegroup.groupname}}">
+                    <input type="submit" class="btn btn-warning" formaction="./removeUserfromGroup" value="remove user">
+                    <input type="submit" class="btn btn-danger" formaction="./manageGroup" value="delete group">
+                    <!--<a  href="./removeUserfromGroup?groupid={{managegroup.id}}" class="btn btn-warning btn-xs"  >remove user</a>-->
+                    <!--<a  href="./addUsertoGroup?groupid={{managegroup.id}}" class="btn btn-success btn-xs"  >add user</a>-->
+                    <!--<button  name="groupname" class="btn btn-danger btn-xs" type="submit" value="{{managegroup.groupname}}">delete group</button>-->
+                </td>
+            </tr>
+        </table>
+
+            </div>
+    </form>
+     {% endfor %}
+</div>
+
+ <label class="label">Groups  I  joined</label>
+<div style="margin-left:20px;">
+    <form action="" method="post">
+        <div>
+        <table>
+             <tr>
+                 <td width="150px"><label >Group Name</label></td>
+                 <td width="200px"><label >Description</label></td>
+                 <td width="200px"><label > </label></td>
+                 <td> </td>
+            </tr>
+            <!--{% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}-->
+        </table>
+            </div>
+    </form>
+    {% for managegroup in otherGroup %}
+     <form action="" method="post">
+         <input type="hidden" value="{{ csrf_token }}" name="csrfmiddlewaretoken">
+        <div>
+        <table>
+             <tr>
+                <td width="150px" >{{managegroup.groupname}}</td>
+                  <td width="200px">{{managegroup.description}}</td>
+                  <td width="200px">
+
+                  </td>
+                <td>
+                    <input type="hidden"  name="groupid" value="{{managegroup.id}}">
+                    <input type="hidden"  name="userid" value="self">
+                    <input type="submit" class="btn btn-danger" formaction="./leaveGroup" value="leave the group">
+                    <!--<a  href="./removeUserfromGroup?groupid={{managegroup.id}}" class="btn btn-warning btn-xs"  >remove user</a>-->
+                    <!--<a  href="./addUsertoGroup?groupid={{managegroup.id}}" class="btn btn-success btn-xs"  >add user</a>-->
+                    <!--<button  name="groupname" class="btn btn-danger btn-xs" type="submit" value="{{managegroup.groupname}}">delete group</button>-->
+                </td>
+            </tr>
+        </table>
+             <label class="label label-danger" for="'id_group_name_error">{{ errors }}</label>
+            </div>
+    </form>
+     {% endfor %}
+</div>
+

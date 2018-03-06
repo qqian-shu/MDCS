@@ -1,0 +1,45 @@
+{% extends "mdcs/extra/one_column.html" %}
+{% load staticfiles %}
+
+{% comment %}
+<!--
+################################################################################
+#
+# File Name: create_group.html
+# Application: templates
+# Description:
+#
+# Author: Sharief Youssef
+#         sharief.youssef@nist.gov
+#
+#		  Guillaume SOUSA AMARAL
+#		  guillaume.sousa@nist.gov
+#
+#         ylzhao
+#         110120115@t.shu.edu.cn
+#
+# Sponsor: National Institute of Standards and Technology
+#
+################################################################################
+-->
+{% endcomment %}
+{% block menu %}{% include 'mdcs/menus/main.html' with active_tab='profile' %}{% endblock %}
+{% block submenu %}
+    {% include 'mdcs/menus/submenu/dashboard.html' with active_tab='tab6' %}
+{% endblock %}
+
+{% block title %}    <h1>Group List
+    <a  href="./createGroup" class="btn "  style="text-decoration:none";><i class="icon-plus"></i>Create Group</a>
+    <a  href="./joinGroup" class="btn " style="text-decoration:none";><i class="icon-plus-sign"></i>Join Group</a>
+</h1>{% endblock %}
+{% if mygroups%}
+    {% include 'dashboard/my_groups_table.html' with groups=mygroups %}
+{%else%}
+    No groups found
+{%endif%}
+
+{% block content %}
+
+
+	{% include 'commons/forms/delete_group.html' %}
+{% endblock %}

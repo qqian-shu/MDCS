@@ -17,3 +17,12 @@ from django import forms
 class CustomGroupForm(forms.Form):
     groupname=forms.CharField(required=True)
     description=forms.CharField(widget=forms.Textarea)
+    
+
+class DeleteGroupForm(forms.Form):
+    groupname=forms.CharField(required=True)
+    # description=forms.CharField(widget=forms.Textarea)
+    # deletegroup = forms.ChoiceField(widget=forms.RadioSelect)
+
+
+

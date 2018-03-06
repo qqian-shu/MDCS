@@ -41,7 +41,7 @@
 						<xsl:attribute name="style">left:0</xsl:attribute>
 					</xsl:if>	
 					<span class="path">
-						<xsl:value-of select="name(.youdia)"/>
+						<xsl:value-of select="name(.)"/>
 				        <xsl:variable name="vnumPrecSiblings" select="count(preceding-sibling::*[name()=name(current())])"/>
 				        <xsl:if test="$vnumPrecSiblings">
 				            <xsl:value-of select="concat('[', $vnumPrecSiblings +1, ']')"/>

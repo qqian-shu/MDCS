@@ -219,6 +219,7 @@ INSTALLED_APPS = (
     'explore',
     'compose',
     'modules',
+    'provide',
     'user_dashboard',
     'oai_pmh',
     'testing',

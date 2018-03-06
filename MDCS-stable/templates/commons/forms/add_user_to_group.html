@@ -1,0 +1,37 @@
+{% load i18n %}
+{% comment %}
+
+<!--
+################################################################################
+#
+# File Name: add_user_to_group.html
+# Application: templates
+# Description:
+#
+# Author: ZzWU
+#         best_distance@126.com
+# Computer Engineering and Science School of Shanghai University
+# Sponsor: National Institute of Standards and Technology
+#
+################################################### #############################
+-->
+{% endcomment %}
+<div style="margin-left:20px;">
+    <form action="" method="post">
+        <div style="display:none">
+            <input type="hidden" value="{{ csrf_token }}" name="csrfmiddlewaretoken">
+        </div>
+
+        <table>
+
+             <tr>
+                <td width="120px"></td >
+                <td width="350px">Invite Code:  <input class='input-large' type="text" name="inviteCode"  /></td>
+                 <td ><button class="btn" type="submit">add</button></td>
+            </tr>
+             <tr>
+              <label> {{ errors }}</label>
+            </tr>
+        </table>
+    </form>
+</div>
